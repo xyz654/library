@@ -1,6 +1,9 @@
 package library.lib.Backend.models;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.JsonObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,15 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Book {
+public class Book implements ReturnObject {
     @Id
     @GeneratedValue
     private int id;
-
     private String title;
     private String author;
     private String description;
-
     private String bookCover;
     @OneToOne
     private Member loaner;
@@ -61,25 +62,13 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title +
-                ", author='" + author +
-                ", description='" + description +
-                ", bookCover='" + bookCover +
-                ", loaner=" + loaner +
-                '}';
+        return "Book{" + "id=" + id + ", title='" + title + ", author='" + author + ", description='" + description + ", bookCover='" + bookCover + ", loaner=" + loaner + '}';
     }
 
-    public String toJson(){
-        JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.addProperty("title", title);
-        json.addProperty("author", author);
-        json.addProperty("description", description);
-        json.addProperty("bookCover", bookCover);
-        json.addProperty("loaner", loaner.toString());
-        return json.toString();
+    public String toJson() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(this);
+        return json;
     }
 
 }

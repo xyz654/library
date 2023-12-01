@@ -3,7 +3,7 @@ package library.lib;
 import library.lib.Backend.models.Member;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MemberTest {
     @Test
@@ -16,7 +16,6 @@ public class MemberTest {
         assertEquals("member", correctMember.getName());
         assertEquals("member@member.member", correctMember.getEmail());
         assertEquals("password123", correctMember.getPassword());
-//        assertEquals(true, true);
     }
 
 }
