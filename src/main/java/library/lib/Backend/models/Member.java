@@ -15,6 +15,11 @@ public class Member implements ReturnObject {
 
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Permissions permission = Permissions.MEMBER;
+
+
+
     public Member() {
     }
 
