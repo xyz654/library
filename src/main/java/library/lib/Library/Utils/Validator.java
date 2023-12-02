@@ -4,21 +4,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
+
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    private static final String USERNAME_REGEX = "[a-zA-Z0-9_]+";
+    private static final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d!@#$%^&*()-_=+\\\\|[{]};:'\",<.>/?`~]{8,}$";
+
     public static boolean validateEmail(String email) {
-        // Regular expression for a basic email validation
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
     public static boolean validateUsername(String username) {
-        // Username should only contain alphanumeric characters and underscores
-        return username.matches("[a-zA-Z0-9_]+");
+        return username.matches(USERNAME_REGEX);
     }
 
     public static boolean validatePassword(String password) {
-        // Password should have at least 8 characters, including uppercase, lowercase, and a number
-        return password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$");
+        return password.matches(PASSWORD_REGEX);
     }
 }

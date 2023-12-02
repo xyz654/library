@@ -88,7 +88,6 @@ public class Member implements ReturnObject {
 
     public String toJson() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(this);
-        return json;
+        return objectMapper.writeValueAsString(this);
     }
 }

@@ -1,31 +1,23 @@
 package library.lib.Library.Controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import library.lib.Backend.models.Member;
 import library.lib.Library.Utils.Validator;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
-import static library.lib.Library.Utils.Service.buildParameters;
+public class RegisterController extends BaseController {
 
-public class RegisterController {
+    private static final String REGISTER_API_URL = "http://localhost:8080/api/users/register";
+
     @FXML
     private TextField usernameField;
 
@@ -53,15 +45,8 @@ public class RegisterController {
 
     @FXML
     private void redirectToLogin() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/login-view.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) registerButton.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Login");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        redirectToScene("/library/lib/login-view.fxml",
+                "Login", (Stage) registerButton.getScene().getWindow());
     }
 
     @FXML
@@ -71,43 +56,40 @@ public class RegisterController {
         String email = emailField.getText();
 
         if (!Validator.validateUsername(username)) {
-            errorMessage.setText("Username should only contain alphanumeric characters and underscores");
-            errorMessage.setOpacity(1);
+            showError("Username should only contain alphanumeric characters and underscores");
             return;
         }
 
         if (!Validator.validateEmail(email)) {
-            errorMessage.setText("Invalid email");
-            errorMessage.setOpacity(1);
+            showError("Invalid email");
             return;
         }
 
         if (!Validator.validatePassword(password)) {
-            errorMessage.setText("Password should have at least 8 characters, including uppercase, lowercase, and a number");
-            errorMessage.setOpacity(1);
+            showError("Password should have at least 8 characters, including uppercase, lowercase, and a number");
             return;
         }
 
         Map<Object, Object> data = new HashMap<>();
-
         data.put("username", username);
         data.put("password", password);
         data.put("email", email);
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/api/users/register" + buildParameters(data)))
-                .POST(
-                        HttpRequest.BodyPublishers.ofString("")
-                )
-                .build();
-        HttpResponse<String> response = client.send(request,
-                HttpResponse.BodyHandlers.ofString());
-        if(response.statusCode() == 200){
-            Member member = new ObjectMapper().readValue(response.body(), Member.class);
-            System.out.println(member);
-            redirectToLogin();
-        }else{
+
+        HttpResponse<String> response = sendHttpRequest(REGISTER_API_URL, data);
+        if (response.statusCode() == 200) {
+            handleSuccessfulLogin(response.body());
+        } else {
             errorMessage.setOpacity(1);
         }
+    }
+
+    @Override
+    protected Node getStage() {
+        return registerButton;
+    }
+
+    private void showError(String message) {
+        errorMessage.setText(message);
+        errorMessage.setOpacity(1);
     }
 }
