@@ -1,22 +1,27 @@
-package library.lib.Library.Controllers;
+package library.lib.frontend.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import library.lib.Backend.models.Member;
-import library.lib.Library.Utils.Service;
+import library.lib.backend.models.Member;
+import library.lib.frontend.utils.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Map;
+import java.util.ResourceBundle;
 
-public abstract class BaseController {
+@Slf4j
+public abstract class BaseController implements Initializable {
 
     protected void redirectToScene(String scenePath, String title, Stage stage) {
         try {
@@ -40,9 +45,13 @@ public abstract class BaseController {
 
     protected void handleSuccessfulLogin(String responseBody) throws IOException {
         Member member = new ObjectMapper().readValue(responseBody, Member.class);
-        System.out.println(member);
+        log.info(String.valueOf(member));
         redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
     }
 
     protected abstract Node getStage();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 }

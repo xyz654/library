@@ -1,6 +1,6 @@
-package library.lib.Backend.persistence;
+package library.lib.backend.persistence;
 
-import library.lib.Backend.models.Member;
+import library.lib.backend.models.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -5,16 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/Library/AppState/AppState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/BaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/DashBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/configurators/MemberConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/MemberConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/controllers/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/controllers/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/dto/MemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/dto/MemberDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Permissions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/ReturnModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/ReturnModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/ReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/ReturnObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/persistence/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/services/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/AppState/AppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/state/UserState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/utils/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/utils/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/register-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/library/lib/MemberTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/library/lib/MemberTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,31 +81,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/create__login__and__register__views__fixes&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;af5206e05ba08bfb63b745fe8b8e088a&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "feature/improving__views__and__adding__global__user",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "af5206e05ba08bfb63b745fe8b8e088a",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -247,7 +260,7 @@
       <workItem from="1701439951616" duration="3472000" />
       <workItem from="1701447530458" duration="537000" />
       <workItem from="1701520120936" duration="1019000" />
-      <workItem from="1701526152648" duration="2596000" />
+      <workItem from="1701526152648" duration="6661000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>

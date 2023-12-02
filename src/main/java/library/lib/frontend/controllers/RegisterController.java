@@ -1,5 +1,6 @@
-package library.lib.Library.Controllers;
+package library.lib.frontend.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -7,7 +8,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import library.lib.Library.Utils.Validator;
+import library.lib.backend.models.Member;
+import library.lib.frontend.state.UserState;
+import library.lib.frontend.utils.Validator;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
@@ -17,6 +20,7 @@ import java.util.Map;
 public class RegisterController extends BaseController {
 
     private static final String REGISTER_API_URL = "http://localhost:8080/api/users/register";
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @FXML
     private TextField usernameField;
@@ -80,6 +84,17 @@ public class RegisterController extends BaseController {
             handleSuccessfulLogin(response.body());
         } else {
             errorMessage.setOpacity(1);
+        }
+    }
+
+    @Override
+    public void handleSuccessfulLogin(String responseBody) {
+        try {
+            Member registeredUser = objectMapper.readValue(responseBody, Member.class);
+            UserState.getInstance().setLoggedInUser(registeredUser);
+            redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

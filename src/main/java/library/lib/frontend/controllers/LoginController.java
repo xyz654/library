@@ -1,5 +1,6 @@
-package library.lib.Library.Controllers;
+package library.lib.frontend.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -7,6 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import library.lib.backend.models.Member;
+import library.lib.frontend.state.UserState;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
@@ -14,6 +17,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginController extends BaseController {
+    private static final String API_URL = "http://localhost:8080/api/users/login";
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @FXML
     private TextField emailField;
@@ -29,6 +35,7 @@ public class LoginController extends BaseController {
 
     @FXML
     private Text signUpLink;
+
 
     @FXML
     private void onKeyPressed() {
@@ -47,11 +54,11 @@ public class LoginController extends BaseController {
 
         Map<Object, Object> data = buildLoginData(password, email);
 
-        HttpResponse<String> response = sendHttpRequest("http://localhost:8080/api/users/login", data);
+        HttpResponse<String> response = sendHttpRequest(API_URL, data);
         if (response.statusCode() == 200) {
             handleSuccessfulLogin(response.body());
         } else {
-            showErrorMessage("Login failed");
+            showErrorMessage();
         }
     }
 
@@ -68,9 +75,22 @@ public class LoginController extends BaseController {
         }
     }
 
-    private void showErrorMessage(String message) {
-        errorMessage.setText(message);
+    private void showErrorMessage() {
+        errorMessage.setText("Login failed");
         errorMessage.setOpacity(1);
+    }
+
+    @Override
+    public void handleSuccessfulLogin(String responseBody) {
+        try {
+            Member loggedInUser = objectMapper.readValue(responseBody, Member.class);
+
+            UserState.getInstance().setLoggedInUser(loggedInUser);
+
+            redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

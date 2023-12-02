@@ -1,6 +1,6 @@
-package library.lib.Backend.dto;
+package library.lib.backend.dto;
 
-import library.lib.Backend.models.Member;
+import library.lib.backend.models.Member;
 
 public record MemberDto(int id, String email, String userName, String password) {
     public static MemberDto from(Member member){

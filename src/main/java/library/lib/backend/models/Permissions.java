@@ -1,4 +1,4 @@
-package library.lib.Backend.models;
+package library.lib.backend.models;
 
 public enum Permissions {
     ADMIN,

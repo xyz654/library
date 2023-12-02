@@ -1,4 +1,4 @@
-package library.lib.Library.Utils;
+package library.lib.frontend.utils;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -7,10 +7,8 @@ import java.util.StringJoiner;
 
 public class Service {
 
-    private static final String BASE_URL = "http://localhost:8080/api";
+    private Service() {
 
-    public static String getBaseUrl() {
-        return BASE_URL;
     }
 
     public static String buildParameters(Map<Object, Object> data) {

@@ -1,16 +1,15 @@
-package library.lib.Library.AppState;
+package library.lib.frontend.state;
 
-import library.lib.Backend.models.Member;
+import library.lib.backend.models.Member;
 
-public class AppState {
-    private static final AppState INSTANCE = new AppState();
-
+public class UserState {
+    private static final UserState INSTANCE = new UserState();
     private Member loggedInUser;
 
-    private AppState() {
+    private UserState() {
     }
 
-    public static AppState getInstance() {
+    public static UserState getInstance() {
         return INSTANCE;
     }
 
