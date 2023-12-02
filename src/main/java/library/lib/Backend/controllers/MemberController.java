@@ -1,5 +1,6 @@
 package library.lib.Backend.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.JsonObject;
 import library.lib.Backend.models.Member;
 import library.lib.Backend.models.ReturnModel;
@@ -20,11 +21,14 @@ public class MemberController {
 
     @RequestMapping(value="/register", method=RequestMethod.POST)
     public ResponseEntity<String> register(@RequestParam String username, @RequestParam String password, @RequestParam String email) {
-        System.out.println("Registering user");
-        System.out.println(username+" "+ password+" "+ email);
-        ReturnModel response = memberService.register(username, password, email);
-
-        return  ResponseEntity.status(response.code).body(response.object == null ? response.message : response.object.toJson());
+        try {
+            System.out.println("Registering user");
+            System.out.println(username+" "+ password+" "+ email);
+            ReturnModel response = memberService.register(username, password, email);
+            return  ResponseEntity.status(response.code).body(response.object == null ? response.message : response.object.toJson());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
@@ -32,6 +36,10 @@ public class MemberController {
 
         ReturnModel member = memberService.login(email, password);
 
-        return ResponseEntity.status(member.code).body(member.object == null ? member.message : member.object.toJson());
+        try {
+            return ResponseEntity.status(member.code).body(member.object == null ? member.message : member.object.toJson());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

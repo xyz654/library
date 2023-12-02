@@ -11,7 +11,7 @@ public class LibraryApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/library/lib/hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/library/lib/register-view.fxml"));
         rootLayout = fxmlLoader.load();
         configureStage(primaryStage);
         primaryStage.show();
@@ -20,7 +20,7 @@ public class LibraryApp extends Application {
     private void configureStage(Stage primaryStage) {
         var scene = new Scene(rootLayout);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Gallery app");
+        primaryStage.setTitle("Library app");
     }
     public static void main(String[] args){
         launch(args);
