@@ -254,7 +254,7 @@
       <workItem from="1701526152648" duration="6661000" />
       <workItem from="1701609684092" duration="654000" />
       <workItem from="1701611053833" duration="1327000" />
-      <workItem from="1701613643689" duration="18000" />
+      <workItem from="1701613643689" duration="51000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>
@@ -291,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701611779398</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added users list on the dashboard">
+      <created>1701613671516</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701613671516</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -35,7 +35,7 @@ public class DashboardController extends BaseController {
             helloText.setText("Hello " + loggedInUser.getName() + "!");
             List<Member> members = service.getLatestMembers(5);
             System.out.println(members);
-            String text = "User list: \n";
+            String text = "Last 5 logged in users: \n";
             for(Member member: members){
                 text += member.getName() + "\n";
             }
