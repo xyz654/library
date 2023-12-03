@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -51,5 +52,13 @@ public class MemberService {
         }
         log.info("User not logged in");
         return new ReturnModel(null, "User not logged in", 202);
+    }
+
+    public List<Member> getLatestMembers(int memberCount) {
+        List<Member> members = memberRepository.findAll();
+        if(members.size() < memberCount){
+            return members;
+        }
+        return members.subList(members.size()-memberCount, members.size());
     }
 }
