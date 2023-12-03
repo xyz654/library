@@ -9,19 +9,22 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.Member;
+import library.lib.backend.models.ReturnModel;
+import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
 import library.lib.frontend.utils.Validator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class RegisterController extends BaseController {
-
-    private static final String REGISTER_API_URL = "http://localhost:8080/api/users/register";
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
+    @Autowired
+    MemberService service;
     @FXML
     private TextField usernameField;
 
@@ -74,28 +77,19 @@ public class RegisterController extends BaseController {
             return;
         }
 
-        Map<Object, Object> data = new HashMap<>();
-        data.put("username", username);
-        data.put("password", password);
-        data.put("email", email);
-
-        HttpResponse<String> response = sendHttpRequest(REGISTER_API_URL, data);
-        if (response.statusCode() == 200) {
-            handleSuccessfulLogin(response.body());
+        ReturnModel model = service.register(username, password, email);
+        if (model.code == 200) {
+            handleSuccessfulLogin((Member) model.object);
         } else {
-            errorMessage.setOpacity(1);
+            showError(model.message);
+
         }
     }
 
     @Override
-    public void handleSuccessfulLogin(String responseBody) {
-        try {
-            Member registeredUser = objectMapper.readValue(responseBody, Member.class);
-            UserState.getInstance().setLoggedInUser(registeredUser);
-            redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void handleSuccessfulLogin(Member registeredUser) {
+        UserState.getInstance().setLoggedInUser(registeredUser);
+        redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
     }
 
     @Override

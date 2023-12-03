@@ -7,9 +7,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import library.lib.LibraryApp;
 import library.lib.backend.models.Member;
+import library.lib.backend.services.MemberService;
+import library.lib.frontend.state.SpringContext;
 import library.lib.frontend.utils.Service;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
@@ -21,11 +30,15 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 @Slf4j
+@Component
 public abstract class BaseController implements Initializable {
 
+//    private ConfigurableApplicationContext springContext;
     protected void redirectToScene(String scenePath, String title, Stage stage) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(scenePath));
+            ConfigurableApplicationContext springContext = SpringContext.getInstance().getContext();
+            loader.setControllerFactory(springContext::getBean);
             Parent root = loader.load();
             stage.setScene(new Scene(root));
             stage.setTitle(title);
@@ -43,8 +56,7 @@ public abstract class BaseController implements Initializable {
         return client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    protected void handleSuccessfulLogin(String responseBody) throws IOException {
-        Member member = new ObjectMapper().readValue(responseBody, Member.class);
+    protected void handleSuccessfulLogin(Member member) throws IOException {
         log.info(String.valueOf(member));
         redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
     }
@@ -53,5 +65,8 @@ public abstract class BaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        springContext = SpringApplication.run(LibraryApp.class);
+//        springContext.getAutowireCapableBeanFactory().autowireBean(this);
+
     }
 }
