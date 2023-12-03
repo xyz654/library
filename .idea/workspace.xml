@@ -4,30 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
+    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/configurators/MemberConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/MemberConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/controllers/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/controllers/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/dto/MemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/dto/MemberDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Permissions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/ReturnModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/ReturnModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/models/ReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/ReturnObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/persistence/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Backend/services/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/AppState/AppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/state/UserState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/utils/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/Library/Utils/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/utils/Validator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/login-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/register-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/library/lib/MemberTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/library/lib/MemberTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BaseController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +26,23 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lib" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lib" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lib" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -73,9 +68,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2YwacSokNyQ0HHitYCMwPOxcL2P" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -102,7 +97,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "af5206e05ba08bfb63b745fe8b8e088a",
+    "spring.configuration.checksum": "5c36bf69f328913fe7acd3a0da96998b",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -149,7 +144,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -173,7 +167,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest.testMember (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -197,7 +190,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest.testMember" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -221,7 +213,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="BackendServer (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -261,6 +252,7 @@
       <workItem from="1701447530458" duration="537000" />
       <workItem from="1701520120936" duration="1019000" />
       <workItem from="1701526152648" duration="6661000" />
+      <workItem from="1701609684092" duration="44000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>
@@ -276,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701443336183</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services">
+      <created>1701603863546</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701603863546</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +284,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Database integration, Member model, controller and service - handling request and member login/register handler" />
     <MESSAGE value="Added tests for Member and added Book class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tests for Member and added Book class" />
+    <MESSAGE value="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services" />
   </component>
 </project>

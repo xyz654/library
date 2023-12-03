@@ -5,17 +5,19 @@ import library.lib.backend.models.ReturnModel;
 import library.lib.backend.persistence.MemberRepository;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Slf4j
 @Service
+@Slf4j
 public class MemberService {
     private final MemberRepository memberRepository;
-
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+        System.out.println(memberRepository);
     }
 
 

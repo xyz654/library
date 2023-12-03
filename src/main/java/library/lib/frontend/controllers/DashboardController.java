@@ -5,10 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.text.Text;
 import library.lib.backend.models.Member;
 import library.lib.frontend.state.UserState;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+@Component
 public class DashboardController extends BaseController {
 
     @FXML
