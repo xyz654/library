@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services">
+    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Added users list on the dashboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +253,8 @@
       <workItem from="1701520120936" duration="1019000" />
       <workItem from="1701526152648" duration="6661000" />
       <workItem from="1701609684092" duration="654000" />
-      <workItem from="1701611053833" duration="656000" />
+      <workItem from="1701611053833" duration="1327000" />
+      <workItem from="1701613643689" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>
@@ -286,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701609735776</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added users list on the dashboard">
+      <created>1701611779398</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701611779398</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,6 +301,7 @@
     <MESSAGE value="Database integration, Member model, controller and service - handling request and member login/register handler" />
     <MESSAGE value="Added tests for Member and added Book class" />
     <MESSAGE value="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services" />
+    <MESSAGE value="Added users list on the dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added users list on the dashboard" />
   </component>
 </project>
