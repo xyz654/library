@@ -65,8 +65,5 @@ public abstract class BaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        springContext = SpringApplication.run(LibraryApp.class);
-//        springContext.getAutowireCapableBeanFactory().autowireBean(this);
-
     }
 }
