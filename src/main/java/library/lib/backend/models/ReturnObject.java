@@ -1,4 +1,4 @@
-package library.lib.Backend.models;
+package library.lib.backend.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 

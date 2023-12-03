@@ -1,15 +1,13 @@
-package library.lib.Backend.controllers;
+package library.lib.backend.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.gson.JsonObject;
-import library.lib.Backend.models.Member;
-import library.lib.Backend.models.ReturnModel;
-import library.lib.Backend.services.MemberService;
+import library.lib.backend.models.ReturnModel;
+import library.lib.backend.services.MemberService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
+@Slf4j
 @RestController
 @RequestMapping(path="/api/users")
 public class MemberController {
@@ -19,11 +17,11 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @RequestMapping(value="/register", method=RequestMethod.POST)
+    @PostMapping(value="/register")
     public ResponseEntity<String> register(@RequestParam String username, @RequestParam String password, @RequestParam String email) {
         try {
-            System.out.println("Registering user");
-            System.out.println(username+" "+ password+" "+ email);
+            log.info("Registering user");
+            log.info(username+" "+ password+" "+ email);
             ReturnModel response = memberService.register(username, password, email);
             return  ResponseEntity.status(response.code).body(response.object == null ? response.message : response.object.toJson());
         } catch (JsonProcessingException e) {
@@ -31,7 +29,7 @@ public class MemberController {
         }
     }
 
-    @RequestMapping(value="/login", method=RequestMethod.POST)
+    @PostMapping(value="/login")
     public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
 
         ReturnModel member = memberService.login(email, password);

@@ -1,7 +1,6 @@
-package library.lib.Backend.models;
+package library.lib.backend.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.gson.JsonObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -67,8 +66,7 @@ public class Book implements ReturnObject {
 
     public String toJson() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(this);
-        return json;
+        return objectMapper.writeValueAsString(this);
     }
 
 }

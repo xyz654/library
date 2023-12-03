@@ -1,7 +1,7 @@
-package library.lib.Backend.configurators;
+package library.lib.backend.configurators;
 
-import library.lib.Backend.models.Member;
-import library.lib.Backend.persistence.MemberRepository;
+import library.lib.backend.models.Member;
+import library.lib.backend.persistence.MemberRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
