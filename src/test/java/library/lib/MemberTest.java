@@ -1,6 +1,6 @@
 package library.lib;
 
-import library.lib.Backend.models.Member;
+import library.lib.backend.models.Member;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

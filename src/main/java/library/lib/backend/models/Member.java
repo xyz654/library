@@ -1,8 +1,7 @@
-package library.lib.Backend.models;
+package library.lib.backend.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonObject;
 
 import javax.persistence.*;
 
@@ -88,7 +87,6 @@ public class Member implements ReturnObject {
 
     public String toJson() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(this);
-        return json;
+        return objectMapper.writeValueAsString(this);
     }
 }
