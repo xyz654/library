@@ -1,6 +1,5 @@
 package library.lib.frontend.state;
 
-import library.lib.backend.models.Member;
 import org.springframework.context.ConfigurableApplicationContext;
 
 public class SpringContext {

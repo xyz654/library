@@ -1,6 +1,5 @@
 package library.lib.frontend.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -17,9 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.http.HttpResponse;
-import java.util.HashMap;
-import java.util.Map;
+
 
 @Component
 public class RegisterController extends BaseController {
@@ -44,11 +41,7 @@ public class RegisterController extends BaseController {
     private Text loginLink;
 
     @FXML
-    private void onKeyPressed() {
-        if (errorMessage.getOpacity() != 0) {
-            errorMessage.setOpacity(0);
-        }
-    }
+    private void onKeyPressed() { hideErrorMessage();}
 
     @FXML
     private void redirectToLogin() {
@@ -63,17 +56,17 @@ public class RegisterController extends BaseController {
         String email = emailField.getText();
 
         if (!Validator.validateUsername(username)) {
-            showError("Username should only contain alphanumeric characters and underscores");
+            showErrorMessage("Username should only contain alphanumeric characters and underscores");
             return;
         }
 
         if (!Validator.validateEmail(email)) {
-            showError("Invalid email");
+            showErrorMessage("Invalid email");
             return;
         }
 
         if (!Validator.validatePassword(password)) {
-            showError("Password should have at least 8 characters, including uppercase, lowercase, and a number");
+            showErrorMessage("Password should have at least 8 characters, including uppercase, lowercase, and a number");
             return;
         }
 
@@ -81,7 +74,7 @@ public class RegisterController extends BaseController {
         if (model.code == 200) {
             handleSuccessfulLogin((Member) model.object);
         } else {
-            showError(model.message);
+            showErrorMessage(model.message);
 
         }
     }
@@ -97,8 +90,14 @@ public class RegisterController extends BaseController {
         return registerButton;
     }
 
-    private void showError(String message) {
+    private void showErrorMessage(String message) {
         errorMessage.setText(message);
         errorMessage.setOpacity(1);
+    }
+
+    private void hideErrorMessage() {
+        if (errorMessage.getOpacity() != 0) {
+            errorMessage.setOpacity(0);
+        }
     }
 }

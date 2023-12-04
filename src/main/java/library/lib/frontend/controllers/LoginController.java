@@ -15,14 +15,9 @@ import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.net.http.HttpResponse;
-import java.util.HashMap;
-import java.util.Map;
 @Component
 public class LoginController extends BaseController {
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     MemberService service;
 
@@ -53,7 +48,7 @@ public class LoginController extends BaseController {
     }
 
     @FXML
-    private void onLoginClick() throws IOException, InterruptedException {
+    private void onLoginClick(){
         String password = passwordField.getText();
         String email = emailField.getText();
 
