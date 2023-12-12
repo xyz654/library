@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member implements ReturnObject {
@@ -16,6 +18,12 @@ public class Member implements ReturnObject {
     private String email;
 
     private String password;
+
+    @OneToMany
+    private List<Book> booksLoaned = new ArrayList<>();
+
+    @OneToMany
+    private List<Rate> reviews = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private Permissions permission = Permissions.MEMBER;
@@ -32,6 +40,30 @@ public class Member implements ReturnObject {
         if (verifyPassword(password)) {
             this.password = password;
         }
+    }
+
+    public void addBook(Book book){
+        booksLoaned.add(book);
+    }
+
+    public void removeBook(Book book){
+        booksLoaned.remove(book);
+    }
+
+    public List<Book> getBooksLoaned() {
+        return booksLoaned;
+    }
+
+    public void addReview(Rate review){
+        reviews.add(review);
+    }
+
+    public void removeReview(Rate review){
+        reviews.remove(review);
+    }
+
+    public List<Rate> getReviews() {
+        return reviews;
     }
 
     public int getId() {

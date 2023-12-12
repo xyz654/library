@@ -4,10 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Book implements ReturnObject {
@@ -20,15 +19,20 @@ public class Book implements ReturnObject {
     private String bookCover;
     @OneToOne
     private Member loaner;
+    @OneToMany
+    private List<Rate> reviews = new ArrayList<>();
+
+    private String tableOfContents;
 
     public Book() {
     }
 
-    public Book(String title, String author, String description, String bookCover) {
+    public Book(String title, String author, String description, String bookCover, String tableOfContents) {
         this.title = title;
         this.author = author;
         this.description = description;
         this.bookCover = bookCover;
+        this.tableOfContents = tableOfContents;
     }
 
     public int getId() {
@@ -57,6 +61,18 @@ public class Book implements ReturnObject {
 
     public void setLoaner(Member loaner) {
         this.loaner = loaner;
+    }
+
+    private String getTableOfContents() {
+        return tableOfContents;
+    }
+
+    public List<Rate> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(Rate review) {
+        reviews.add(review);
     }
 
     @Override
