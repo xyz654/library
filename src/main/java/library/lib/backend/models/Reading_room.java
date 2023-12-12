@@ -7,7 +7,7 @@ import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Entity
-public class History {
+public class Reading_room {
     @Id
     @GeneratedValue
     private int id;
@@ -21,10 +21,10 @@ public class History {
 
     private Date end_date;
 
-    public History() {
+    public Reading_room() {
     }
 
-    public History(Member member, Book book, Date start_date, Date end_date) {
+    public Reading_room(Member member, Book book, Date start_date, Date end_date) {
         this.member = member;
         this.book = book;
         this.start_date = start_date;
