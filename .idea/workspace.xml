@@ -4,9 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Added users list on the dashboard">
+    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Updated models to match documentation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/BookConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/AuthorRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/BookRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/ReadingRoomRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/BackendServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/MemberConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/MemberConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Reading_room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/ReadingRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +73,7 @@
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -76,37 +95,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/improving__views__and__adding__global__user&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;5c36bf69f328913fe7acd3a0da96998b&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "git-widget-placeholder": "feature/improving__views__and__adding__global__user",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Studia/twProjekt/jk-sr-0940-bananowce/library.mv.db",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "5c36bf69f328913fe7acd3a0da96998b",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="library.lib.Backend.models" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="library.lib.backend.persistence" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.LibraryApp">
@@ -255,6 +283,13 @@
       <workItem from="1701609684092" duration="654000" />
       <workItem from="1701611053833" duration="1327000" />
       <workItem from="1701613643689" duration="51000" />
+      <workItem from="1701801410389" duration="618000" />
+      <workItem from="1702408443982" duration="1670000" />
+      <workItem from="1702456454141" duration="4261000" />
+      <workItem from="1702462985337" duration="18000" />
+      <workItem from="1702464581009" duration="971000" />
+      <workItem from="1702466074343" duration="377000" />
+      <workItem from="1702477697152" duration="2136000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>
@@ -298,7 +333,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701613671516</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated models to match documentation">
+      <created>1702409265839</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702409265839</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated models to match documentation">
+      <created>1702409401161</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702409401161</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +358,7 @@
     <MESSAGE value="Added tests for Member and added Book class" />
     <MESSAGE value="Changed the way views are connnected to the service, instead of the connection with usage of HttpProtocol view controllers can call directly Services" />
     <MESSAGE value="Added users list on the dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added users list on the dashboard" />
+    <MESSAGE value="Updated models to match documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated models to match documentation" />
   </component>
 </project>

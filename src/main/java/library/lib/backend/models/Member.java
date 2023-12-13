@@ -45,6 +45,16 @@ public class Member implements ReturnObject {
             this.password = password;
         }
     }
+    public Member(String name, String email, String password, Permissions permission) {
+        this.name = name;
+        if (verifyEmail(email)) {
+            this.email = email;
+        }
+        if (verifyPassword(password)) {
+            this.password = password;
+        }
+        this.permission = permission;
+    }
 
     public void addBook(Book book){
         booksLoaned.add(book);
@@ -114,6 +124,10 @@ public class Member implements ReturnObject {
 
     public String getName() {
         return name;
+    }
+
+    public Permissions getPermission() {
+        return permission;
     }
 
     @Override

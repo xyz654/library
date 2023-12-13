@@ -1,6 +1,8 @@
 package library.lib.backend.services;
 
+import library.lib.backend.models.Book;
 import library.lib.backend.models.Member;
+import library.lib.backend.models.Permissions;
 import library.lib.backend.models.ReturnModel;
 import library.lib.backend.persistence.MemberRepository;
 
@@ -24,6 +26,13 @@ public class MemberService {
 
     public ReturnModel register(String username, String password, String email) {
         try{
+            if(memberRepository.count() == 0){
+                Member member = new Member("admin", "admin@admin.admin", "zaq1@WSX", Permissions.ADMIN);
+                memberRepository.save(member);
+                Member member2 = new Member("worker", "worker@worker.worker", "zaq1@WSX", Permissions.WORKER);
+                memberRepository.save(member2);
+            }
+
             log.info("Email: "+email+" Password: "+password+" Username: "+username);
             Optional<Member> user = memberRepository.findByEmail(email);
             if(user.isPresent()) {
@@ -61,4 +70,10 @@ public class MemberService {
         }
         return members.subList(members.size()-memberCount, members.size());
     }
+
+    public Optional<Member> getMember(Member member){
+        return memberRepository.findById(member.getId());
+    }
+
+
 }

@@ -7,7 +7,7 @@ import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Entity
-public class Reading_room {
+public class ReadingRoom {
     @Id
     @GeneratedValue
     private int id;
@@ -21,10 +21,14 @@ public class Reading_room {
 
     private Date end_date;
 
-    public Reading_room() {
+    public ReadingRoom() {
     }
-
-    public Reading_room(Member member, Book book, Date start_date, Date end_date) {
+    public ReadingRoom(Member member, Book book, Date start_date) {
+        this.member = member;
+        this.book = book;
+        this.start_date = start_date;
+    }
+    public ReadingRoom(Member member, Book book, Date start_date, Date end_date) {
         this.member = member;
         this.book = book;
         this.start_date = start_date;
@@ -43,12 +47,16 @@ public class Reading_room {
         return book;
     }
 
-    public Date getStart_date() {
+    public Date getStartDate() {
         return start_date;
     }
 
-    public Date getEnd_date() {
+    public Date getEndDate() {
         return end_date;
+    }
+
+    public void setEndDate(Date end_date) {
+        this.end_date = end_date;
     }
 
 

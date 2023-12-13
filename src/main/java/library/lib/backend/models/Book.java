@@ -18,9 +18,11 @@ public class Book implements ReturnObject {
     @GeneratedValue
     private int id;
     private String title;
-    private String author;
+    @OneToOne
+    private Author author;
     private String description;
     private String bookCover;
+    private String category;
     @OneToOne
     private Member loaner;
     @OneToMany
@@ -31,7 +33,7 @@ public class Book implements ReturnObject {
     public Book() {
     }
 
-    public Book(String title, String author, String description, String bookCover, String tableOfContents) {
+    public Book(String title, Author author, String description, String bookCover, String tableOfContents) {
         this.title = title;
         this.author = author;
         this.description = description;
@@ -47,7 +49,7 @@ public class Book implements ReturnObject {
         return title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
@@ -77,6 +79,10 @@ public class Book implements ReturnObject {
 
     public void addReview(Rate review) {
         reviews.add(review);
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override

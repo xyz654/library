@@ -7,8 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import library.lib.backend.models.Member;
-import library.lib.backend.models.ReturnModel;
+import library.lib.backend.models.*;
+import library.lib.backend.services.BookService;
 import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
 import library.lib.frontend.utils.Validator;
@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @Component
