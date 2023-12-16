@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Optional;
 public interface ReadingRoomRepository extends JpaRepository<ReadingRoom, Integer> {
     @Query("Select r.book from ReadingRoom r where r.end_date != null")
-    List<ReadingRoom> getBookHistory(Member member);
+    List<Book> getBookHistory(Member member);
 
     @Query("Select r.book from ReadingRoom r where r.end_date = null")
-    List<ReadingRoom> getCurrentReadingBooks(Member member);
+    List<Book> getCurrentReadingBooks(Member member);
 
     @Query("Select r.book from ReadingRoom r where r.member = ?1")
     List<Book> getRentedBooks(Member member);

@@ -17,6 +17,7 @@ import java.util.Optional;
 @Slf4j
 public class MemberService {
     private final MemberRepository memberRepository;
+
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -25,27 +26,27 @@ public class MemberService {
 
 
     public ReturnModel register(String username, String password, String email) {
-        try{
-            if(memberRepository.count() == 0){
+        try {
+            if (memberRepository.count() == 0) {
                 Member member = new Member("admin", "admin@admin.admin", "zaq1@WSX", Permissions.ADMIN);
                 memberRepository.save(member);
                 Member member2 = new Member("worker", "worker@worker.worker", "zaq1@WSX", Permissions.WORKER);
                 memberRepository.save(member2);
             }
 
-            log.info("Email: "+email+" Password: "+password+" Username: "+username);
+            log.info("Email: " + email + " Password: " + password + " Username: " + username);
             Optional<Member> user = memberRepository.findByEmail(email);
-            if(user.isPresent()) {
+            if (user.isPresent()) {
                 return new ReturnModel(null, "User already exists", 202);
             }
             Member newMember = new Member(username, email, password);
-            if(newMember.getPassword() == null || newMember.getEmail() == null ){
+            if (newMember.getPassword() == null || newMember.getEmail() == null) {
                 return new ReturnModel(null, "Invalid email or password", 202);
             }
             memberRepository.save(newMember);
             return new ReturnModel(newMember, "User registered", 200);
 
-        }catch(Exception e){
+        } catch (Exception e) {
             log.info(String.valueOf(e));
             return new ReturnModel(null, "Error", 500);
         }
@@ -54,9 +55,9 @@ public class MemberService {
 
     public ReturnModel login(String email, String password) {
         Optional<Member> user = memberRepository.findByEmail(email);
-        if(user.isPresent() && (user.get().getPassword().equals(password))) {
-                log.info("User logged in");
-                return new ReturnModel(user.get(), "User logged in", 200);
+        if (user.isPresent() && (user.get().getPassword().equals(password))) {
+            log.info("User logged in");
+            return new ReturnModel(user.get(), "User logged in", 200);
 
         }
         log.info("User not logged in");
@@ -65,13 +66,13 @@ public class MemberService {
 
     public List<Member> getLatestMembers(int memberCount) {
         List<Member> members = memberRepository.findAll();
-        if(members.size() < memberCount){
+        if (members.size() < memberCount) {
             return members;
         }
-        return members.subList(members.size()-memberCount, members.size());
+        return members.subList(members.size() - memberCount, members.size());
     }
 
-    public Optional<Member> getMember(Member member){
+    public Optional<Member> getMember(Member member) {
         return memberRepository.findById(member.getId());
     }
 
