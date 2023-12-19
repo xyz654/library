@@ -1,9 +1,6 @@
 package library.lib.backend.services;
 
-import library.lib.backend.models.Book;
-import library.lib.backend.models.Member;
-import library.lib.backend.models.ReadingRoom;
-import library.lib.backend.models.ReturnModel;
+import library.lib.backend.models.*;
 import library.lib.backend.persistence.ReadingRoomRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,15 +20,15 @@ public class ReadingRoomService {
 
     public ReturnModel rentBook(Book book, Member member) {
         if (member == null) {
-            return new ReturnModel(null, "User not logged in", 202);
+            return new ReturnModel(null, "User not logged in", ReturnCodes.USER_ERROR);
         }
 
         if (book == null) {
-            return new ReturnModel(null, "Book not found", 202);
+            return new ReturnModel(null, "Book not found", ReturnCodes.USER_ERROR);
         }
 
         if (book.getLoaner() != null) {
-            return new ReturnModel(null, "Book already rented", 202);
+            return new ReturnModel(null, "Book already rented", ReturnCodes.USER_ERROR);
         }
 
         try {
@@ -40,10 +37,10 @@ public class ReadingRoomService {
             readingRoomRepository.save(readingRoom);
             book.setLoaner(member);
             member.addBook(book);
-            return new ReturnModel(book, "Book rented", 200);
+            return new ReturnModel(book, "Book rented", ReturnCodes.OK);
         } catch (Exception e) {
-            log.info(String.valueOf(e));
-            return new ReturnModel(null, "Error", 500);
+            log.error(String.valueOf(e));
+            return new ReturnModel(null, "Error", ReturnCodes.ERROR);
         }
     }
 

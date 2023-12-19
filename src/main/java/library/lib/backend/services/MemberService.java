@@ -1,9 +1,6 @@
 package library.lib.backend.services;
 
-import library.lib.backend.models.Book;
-import library.lib.backend.models.Member;
-import library.lib.backend.models.Permissions;
-import library.lib.backend.models.ReturnModel;
+import library.lib.backend.models.*;
 import library.lib.backend.persistence.MemberRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +18,6 @@ public class MemberService {
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
-        System.out.println(memberRepository);
     }
 
 
@@ -37,18 +33,18 @@ public class MemberService {
             log.info("Email: " + email + " Password: " + password + " Username: " + username);
             Optional<Member> user = memberRepository.findByEmail(email);
             if (user.isPresent()) {
-                return new ReturnModel(null, "User already exists", 202);
+                return new ReturnModel(null, "User already exists", ReturnCodes.USER_ERROR);
             }
             Member newMember = new Member(username, email, password);
             if (newMember.getPassword() == null || newMember.getEmail() == null) {
-                return new ReturnModel(null, "Invalid email or password", 202);
+                return new ReturnModel(null, "Invalid email or password", ReturnCodes.USER_ERROR);
             }
             memberRepository.save(newMember);
-            return new ReturnModel(newMember, "User registered", 200);
+            return new ReturnModel(newMember, "User registered", ReturnCodes.OK);
 
         } catch (Exception e) {
-            log.info(String.valueOf(e));
-            return new ReturnModel(null, "Error", 500);
+            log.error(String.valueOf(e));
+            return new ReturnModel(null, "Error", ReturnCodes.ERROR);
         }
 
     }
@@ -57,11 +53,10 @@ public class MemberService {
         Optional<Member> user = memberRepository.findByEmail(email);
         if (user.isPresent() && (user.get().getPassword().equals(password))) {
             log.info("User logged in");
-            return new ReturnModel(user.get(), "User logged in", 200);
-
+            return new ReturnModel(user.get(), "User logged in", ReturnCodes.OK);
         }
         log.info("User not logged in");
-        return new ReturnModel(null, "User not logged in", 202);
+        return new ReturnModel(null, "User not logged in", ReturnCodes.USER_ERROR);
     }
 
     public List<Member> getLatestMembers(int memberCount) {
@@ -75,6 +70,4 @@ public class MemberService {
     public Optional<Member> getMember(Member member) {
         return memberRepository.findById(member.getId());
     }
-
-
 }

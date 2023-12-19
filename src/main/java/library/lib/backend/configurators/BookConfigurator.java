@@ -32,12 +32,10 @@ public class BookConfigurator {
                           "Quo Vadis",
                        "https://ecsmedia.pl/c/quo-vadis-b-iext123393340.jpg",
                        "cos 2");
-               System.out.println("dodaje ksiazki");
                 authorRepository.save(author);
                 authorRepository.save(author2);
                 bookRepository.save(book);
                 bookRepository.save(book2);
-
            }
         };
     }

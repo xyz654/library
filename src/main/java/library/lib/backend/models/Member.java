@@ -38,21 +38,13 @@ public class Member implements ReturnObject {
 
     public Member(String name, String email, String password) {
         this.name = name;
-        if (verifyEmail(email)) {
-            this.email = email;
-        }
-        if (verifyPassword(password)) {
-            this.password = password;
-        }
+        this.email = verifyEmail(email) ? email : null;
+        this.password = verifyPassword(password) ? password : null;
     }
     public Member(String name, String email, String password, Permissions permission) {
         this.name = name;
-        if (verifyEmail(email)) {
-            this.email = email;
-        }
-        if (verifyPassword(password)) {
-            this.password = password;
-        }
+        this.email = verifyEmail(email) ? email : null;
+        this.password = verifyPassword(password) ? password : null;
         this.permission = permission;
     }
 

@@ -25,11 +25,11 @@ public class BookService {
 
     public ReturnModel addBook(Book book, Member member) {
         if (member == null) {
-            return new ReturnModel(null, "User not logged in", 202);
+            return new ReturnModel(null, "User not logged in", ReturnCodes.USER_ERROR);
         }
 
         if (member.getPermission() != Permissions.ADMIN && member.getPermission() != Permissions.WORKER) {
-            return new ReturnModel(null, "User not authorized", 202);
+            return new ReturnModel(null, "User not authorized", ReturnCodes.USER_ERROR);
         }
 
         try {
@@ -42,10 +42,10 @@ public class BookService {
                 book.setAuthor(author);
             }
             bookRepository.save(book);
-            return new ReturnModel(book, "Book added", 200);
+            return new ReturnModel(book, "Book added", ReturnCodes.OK);
         } catch (Exception e) {
-            log.info(String.valueOf(e));
-            return new ReturnModel(null, "Error", 500);
+            log.error(String.valueOf(e));
+            return new ReturnModel(null, "Error", ReturnCodes.ERROR);
         }
     }
 

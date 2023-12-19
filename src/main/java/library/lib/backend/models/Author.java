@@ -1,5 +1,7 @@
 package library.lib.backend.models;
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +9,9 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Entity
+@lombok.Setter
 public class Author {
     @Id
     @GeneratedValue
@@ -42,22 +46,6 @@ public class Author {
 
     public void removeBook(Book book){
         booksWritten.remove(book);
-    }
-
-    public List<Book> getBooksWritten() {
-        return booksWritten;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getNick() {
-        return nick;
     }
 
 }
