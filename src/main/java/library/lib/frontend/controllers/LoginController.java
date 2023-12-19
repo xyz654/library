@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.Book;
 import library.lib.backend.models.Member;
+import library.lib.backend.models.ReturnCodes;
 import library.lib.backend.models.ReturnModel;
 import library.lib.backend.services.BookService;
 import library.lib.backend.services.MemberService;
@@ -58,7 +59,7 @@ public class LoginController extends BaseController {
         String email = emailField.getText();
 
         ReturnModel model = service.login(email, password);
-        if (model.code == 200) {
+        if (model.code == ReturnCodes.OK) {
             System.out.println("Success");
             handleSuccessfulLogin((Member) model.object);
         } else {

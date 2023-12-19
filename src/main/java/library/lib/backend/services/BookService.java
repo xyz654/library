@@ -3,13 +3,10 @@ package library.lib.backend.services;
 import library.lib.backend.models.*;
 import library.lib.backend.persistence.AuthorRepository;
 import library.lib.backend.persistence.BookRepository;
-import library.lib.backend.persistence.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j

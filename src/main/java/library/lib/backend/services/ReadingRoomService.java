@@ -56,7 +56,7 @@ public class ReadingRoomService {
             book.setLoaner(null);
         }
         readingRoomRepository.getReadingRoom(book, member).ifPresent(readingRoom -> {
-            readingRoom.setEndDate(new Date());
+            readingRoom.setEnd_date(new Date());
             readingRoomRepository.save(readingRoom);
         });
     }

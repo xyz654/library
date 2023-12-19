@@ -72,7 +72,7 @@ public class RegisterController extends BaseController {
         }
 
         ReturnModel model = service.register(username, password, email);
-        if (model.code == 200) {
+        if (model.code == ReturnCodes.OK) {
             handleSuccessfulLogin((Member) model.object);
         } else {
             showErrorMessage(model.message);

@@ -2,6 +2,8 @@ package library.lib.backend.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import javax.persistence.Entity;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Book implements ReturnObject {
     @Id
     @GeneratedValue
@@ -41,48 +45,8 @@ public class Book implements ReturnObject {
         this.tableOfContents = tableOfContents;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getBookCover() {
-        return bookCover;
-    }
-
-    public Member getLoaner() {
-        return loaner;
-    }
-
-    public void setLoaner(Member loaner) {
-        this.loaner = loaner;
-    }
-
-    private String getTableOfContents() {
-        return tableOfContents;
-    }
-
-    public List<Rate> getReviews() {
-        return reviews;
-    }
-
     public void addReview(Rate review) {
         reviews.add(review);
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
     }
 
     @Override

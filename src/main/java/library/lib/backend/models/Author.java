@@ -1,6 +1,7 @@
 package library.lib.backend.models;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Getter
 @Entity
-@lombok.Setter
+@Setter
 public class Author {
     @Id
     @GeneratedValue
