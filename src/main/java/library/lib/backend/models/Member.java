@@ -75,17 +75,11 @@ public class Member implements ReturnObject {
     }
 
     public boolean verifyEmail(String email) {
-        if (email.contains("@") && email.contains(".")) {
-            return true;
-        }
-        return false;
+        return email.contains("@") && email.contains(".");
     }
 
     public boolean verifyPassword(String password) {
-        if (password.length() >= 8) {
-            return true;
-        }
-        return false;
+        return password.length() >= 8;
     }
 
     @Override
