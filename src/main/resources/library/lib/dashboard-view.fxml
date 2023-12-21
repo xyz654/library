@@ -3,13 +3,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.DashboardController">
    <center>
       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Text fx:id="helloText" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello User!" />
             <Text fx:id="userList" strokeType="OUTSIDE" strokeWidth="0.0" text="User List" />
-
+            <Button fx:id="allBooksButton" mnemonicParsing="false" onAction="#redirectToBooksList" prefHeight="25.0" prefWidth="260.0" style="-fx-background-color: #964B00;" text="All books" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Lato Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </VBox>
    </center>
