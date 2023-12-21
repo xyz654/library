@@ -33,9 +33,9 @@ public abstract class BaseController implements Initializable {
         }
     }
 
-    protected void handleSuccessfulLogin(Member member) throws IOException {
+    protected void handleSuccessfulLogin(Member member) {
         log.info(String.valueOf(member));
-        redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
+        redirectToScene("/library/lib/dashboard-view.fxml", "Dashboard", (Stage) getStage().getScene().getWindow());
     }
 
     protected abstract Node getStage();
