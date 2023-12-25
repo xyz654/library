@@ -36,6 +36,17 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="rentedBooksHistory" mnemonicParsing="false" onAction="#redirectToRentedBooksHistory" prefHeight="25.0" prefWidth="260.0" style="-fx-background-color: #964B00;" text="Rented Books History" textFill="WHITE">
+               <font>
+                  <Font name="Lato Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </center>

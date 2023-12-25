@@ -7,9 +7,13 @@
     <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Fixed book return">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.trace.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/ReadingRoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/ReadingRoomRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/CurrentRentedBooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/CurrentRentedBooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/book-list-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/book-list-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/current-rented-books-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/current-rented-books-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +161,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -180,6 +185,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest.testMember (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -203,29 +209,29 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
-    <configuration name="MemberTest.testMember" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="jk-sr-0940-bananowce [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;MemberTest.testMember&quot;" />
+            <option value="assemble" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="BackendServer (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -251,11 +257,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.jk-sr-0940-bananowce [assemble]" />
         <item itemvalue="Application.LibraryApp" />
         <item itemvalue="Gradle.MemberTest (1)" />
         <item itemvalue="Gradle.MemberTest.testMember (1)" />
         <item itemvalue="Gradle.MemberTest" />
-        <item itemvalue="Gradle.MemberTest.testMember" />
       </list>
     </recent_temporary>
   </component>

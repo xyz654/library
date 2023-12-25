@@ -15,7 +15,7 @@ public interface ReadingRoomRepository extends JpaRepository<ReadingRoom, Intege
     @Query("Select r from ReadingRoom r where r.end_date = null and r.member = ?1")
     List<ReadingRoom> getCurrentReadingBooksByUser(Member member);
 
-    @Query("Select r from ReadingRoom r where r.member = ?1")
+    @Query("Select r from ReadingRoom r where r.end_date != null and r.member = ?1")
     List<ReadingRoom> getAllRentedBooksByUser(Member member);
 
     @Query("Select r.book from ReadingRoom r where r.end_date = null")

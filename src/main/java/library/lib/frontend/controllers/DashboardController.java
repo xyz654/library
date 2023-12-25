@@ -30,6 +30,9 @@ public class DashboardController extends BaseController {
     @FXML
     private Button currentRentedBooks;
 
+    @FXML
+    private Button rentedBooksHistory;
+
     @Autowired
     MemberService service;
 
@@ -40,7 +43,12 @@ public class DashboardController extends BaseController {
 
     @FXML
     private void redirectToCurrentRentedBooks() {
-        redirectToScene("/library/lib/current-rented-books-view.fxml", "Books", (Stage) currentRentedBooks.getScene().getWindow());
+        redirectToScene("/library/lib/current-rented-books-view.fxml", "Books", (Stage) rentedBooksHistory.getScene().getWindow());
+    }
+
+    @FXML
+    private void redirectToRentedBooksHistory() {
+        redirectToScene("/library/lib/rented-books-history-view.fxml", "Books", (Stage) currentRentedBooks.getScene().getWindow());
     }
 
     @Override
