@@ -3,11 +3,8 @@ package library.lib.frontend.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -20,15 +17,11 @@ import javafx.util.Callback;
 import library.lib.backend.models.Book;
 import library.lib.backend.models.Member;
 import library.lib.backend.models.ReadingRoom;
-import library.lib.backend.services.BookService;
 import library.lib.backend.services.ReadingRoomService;
-import library.lib.frontend.state.SpringContext;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -58,7 +51,7 @@ public class CurrentRentedBooksController extends BaseController {
     }
 
     private void displayBooks() {
-        List<ReadingRoom> readingRooms = readingRoomService.getCurrentRentedBooks(UserState.getInstance().getLoggedInUser());
+        List<ReadingRoom> readingRooms = readingRoomService.getCurrentRentedBooksByMember(UserState.getInstance().getLoggedInUser());
         ObservableList<ReadingRoom> observableReadingRooms = FXCollections.observableArrayList(readingRooms);
         bookListView.setItems(observableReadingRooms);
     }

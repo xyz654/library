@@ -54,8 +54,9 @@ public class ReadingRoomService {
     }
 
     List<Book> getRentedBooksByMember(Member member) {
-        return readingRoomRepository.getRentedBooks(member);
+        return readingRoomRepository.getRentedBooksByUser(member);
     }
+
 
     public void returnBook(Book book, Member member) {
         member.removeBook(book);
@@ -71,12 +72,16 @@ public class ReadingRoomService {
     List<Book> getAllRentedBooks() {
         return readingRoomRepository.getCurrentRentedBooks();
     }
-
-    public List<Book> getBookHistory(Member member) {
-        return readingRoomRepository.getBookHistory(member);
+    List<Book> getAllReturnedBooks() {
+        return readingRoomRepository.getPreviouslyRentedBooks();
     }
 
-    public List<ReadingRoom> getCurrentRentedBooks(Member member) {
-        return readingRoomRepository.getCurrentReadingBooks(member);
+    List<ReadingRoom> getUserHistory(Member member) {
+        return readingRoomRepository.getAllRentedBooksByUser(member);
+    }
+
+
+    public List<ReadingRoom> getCurrentRentedBooksByMember(Member member) {
+        return readingRoomRepository.getCurrentReadingBooksByUser(member);
     }
 }
