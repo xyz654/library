@@ -22,7 +22,7 @@ public interface ReadingRoomRepository extends JpaRepository<ReadingRoom, Intege
     List<Book> getCurrentRentedBooks();
     @Query("Select r.book from ReadingRoom r where r.end_date != null")
     List<Book> getPreviouslyRentedBooks();
-    @Query("Select r from ReadingRoom r where r.book = ?1 and r.member = ?2")
-    Optional<ReadingRoom> getReadingRoom(Book book, Member member);
+    @Query("Select r from ReadingRoom r where r.book = ?1 and r.member = ?2 order by r.id desc")
+    List<ReadingRoom> getReadingRoom(Book book, Member member);
 
 }

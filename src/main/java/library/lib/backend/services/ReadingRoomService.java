@@ -63,10 +63,10 @@ public class ReadingRoomService {
         memberRepository.save(member);
         book.setLoaner(null);
         bookRepository.save(book);
-        readingRoomRepository.getReadingRoom(book, member).ifPresent(readingRoom -> {
-            readingRoom.setEnd_date(new Date());
-            readingRoomRepository.save(readingRoom);
-        });
+        List<ReadingRoom> readingRooms = readingRoomRepository.getReadingRoom(book, member);
+        ReadingRoom readingRoom = readingRooms.get(0);
+        readingRoom.setEnd_date(new Date());
+        readingRoomRepository.save(readingRoom);
     }
 
     public List<Book> getAllRentedBooks() {
