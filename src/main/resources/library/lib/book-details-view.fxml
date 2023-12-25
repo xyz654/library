@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Button?>
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.BookDetailsController"
             style="-fx-background-color: #e0d2bf;">
 
@@ -23,9 +25,22 @@
                 <ImageView fx:id="coverImageView" fitWidth="200" preserveRatio="true" />
                 <Text fx:id="authorLabel" style="-fx-fill: #3e3e3e;" />
                 <Text fx:id="categoryLabel" style="-fx-fill: #3e3e3e;" />
-                <Text fx:id="descriptionLabel" wrappingWidth="400" style="-fx-fill: #3e3e3e;" />
-
-                <Button fx:id="goBack" text="Go Back" onAction="#goBackToBookList" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" />
+                <Text fx:id="descriptionLabel" style="-fx-fill: #3e3e3e;" wrappingWidth="400" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+      
+                      <Button fx:id="goBack" onAction="#goBackToBookList" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Go Back">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="rentBook" mnemonicParsing="false" onAction="#rentBook" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Rent Book">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
             </VBox>
         </ScrollPane>
     </center>

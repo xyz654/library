@@ -1,6 +1,8 @@
 package library.lib.backend.services;
 
 import library.lib.backend.models.*;
+import library.lib.backend.persistence.BookRepository;
+import library.lib.backend.persistence.MemberRepository;
 import library.lib.backend.persistence.ReadingRoomRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,9 +15,14 @@ import java.util.List;
 public class ReadingRoomService {
 
     private final ReadingRoomRepository readingRoomRepository;
+    private final MemberRepository memberRepository;
+    private final BookRepository bookRepository;
 
-    public ReadingRoomService(ReadingRoomRepository readingRoomRepository) {
+    public ReadingRoomService(ReadingRoomRepository readingRoomRepository, MemberRepository memberRepository, BookRepository bookRepository) {
         this.readingRoomRepository = readingRoomRepository;
+        this.memberRepository = memberRepository;
+        this.bookRepository = bookRepository;
+
     }
 
     public ReturnModel rentBook(Book book, Member member) {
@@ -37,6 +44,8 @@ public class ReadingRoomService {
             readingRoomRepository.save(readingRoom);
             book.setLoaner(member);
             member.addBook(book);
+            memberRepository.save(member);
+            bookRepository.save(book);
             return new ReturnModel(book, "Book rented", ReturnCodes.OK);
         } catch (Exception e) {
             log.error(String.valueOf(e));
@@ -51,9 +60,11 @@ public class ReadingRoomService {
     public void returnBook(Book book, Member member) {
         if (member.getBooksLoaned().contains(book)) {
             member.removeBook(book);
+            memberRepository.save(member);
         }
-        if (book.getLoaner().equals(member)) {
+        if (book.getLoaner() != null) {
             book.setLoaner(null);
+            bookRepository.save(book);
         }
         readingRoomRepository.getReadingRoom(book, member).ifPresent(readingRoom -> {
             readingRoom.setEnd_date(new Date());
@@ -69,7 +80,7 @@ public class ReadingRoomService {
         return readingRoomRepository.getBookHistory(member);
     }
 
-    public List<Book> getCurrentRentedBooks(Member member) {
+    public List<ReadingRoom> getCurrentRentedBooks(Member member) {
         return readingRoomRepository.getCurrentReadingBooks(member);
     }
 }

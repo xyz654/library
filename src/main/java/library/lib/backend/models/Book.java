@@ -6,11 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +25,7 @@ public class Book implements ReturnObject {
     private String category;
     @OneToOne
     private Member loaner;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Rate> reviews = new ArrayList<>();
 
     private String tableOfContents;
@@ -37,12 +33,13 @@ public class Book implements ReturnObject {
     public Book() {
     }
 
-    public Book(String title, Author author, String description, String bookCover, String tableOfContents) {
+    public Book(String title, Author author, String description, String bookCover, String tableOfContents, String category) {
         this.title = title;
         this.author = author;
         this.description = description;
         this.bookCover = bookCover;
         this.tableOfContents = tableOfContents;
+        this.category = category;
     }
 
     public void addReview(Rate review) {

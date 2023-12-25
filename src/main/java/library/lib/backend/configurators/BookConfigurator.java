@@ -24,13 +24,13 @@ public class BookConfigurator {
                Book book = new Book("Pan Tadeusz", author,
                        "Pan taduesz",
                        "https://ecsmedia.pl/cdn-cgi/image/format=webp,/c/pan-tadeusz-b-iext135008338.jpg",
-                       "cos ");
+                       "cos ", "Powieść");
                Book book2 = new Book(
                        "Quo Vadis",
                           author2,
                           "Quo Vadis",
                        "https://ecsmedia.pl/c/quo-vadis-b-iext123393340.jpg",
-                       "cos 2");
+                       "cos 2", "Powieść");
                 authorRepository.save(author);
                 authorRepository.save(author2);
                 bookRepository.save(book);

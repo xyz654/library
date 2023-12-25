@@ -27,12 +27,20 @@ public class DashboardController extends BaseController {
     @FXML
     private Button allBooksButton;
 
+    @FXML
+    private Button currentRentedBooks;
+
     @Autowired
     MemberService service;
 
     @FXML
     private void redirectToBooksList() {
         redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) allBooksButton.getScene().getWindow());
+    }
+
+    @FXML
+    private void redirectToCurrentRentedBooks() {
+        redirectToScene("/library/lib/current-rented-books-view.fxml", "Books", (Stage) currentRentedBooks.getScene().getWindow());
     }
 
     @Override
