@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Updated models to match documentation">
+    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Removed whitespace in BookConfigurator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/BookConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/BookConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/ReadingRoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/ReadingRoomRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/ReadingRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/ReadingRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/book-details-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/book-details-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +158,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -189,7 +181,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest.testMember (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -213,7 +204,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="MemberTest.testMember" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -237,7 +227,6 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
     <configuration name="BackendServer (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -294,6 +283,7 @@
       <workItem from="1702464581009" duration="971000" />
       <workItem from="1702466074343" duration="377000" />
       <workItem from="1702477697152" duration="2136000" />
+      <workItem from="1703515090822" duration="885000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>

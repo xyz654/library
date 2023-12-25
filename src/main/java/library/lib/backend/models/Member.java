@@ -54,7 +54,13 @@ public class Member implements ReturnObject {
     }
 
     public void removeBook(Book book) {
-        booksLoaned.remove(book);
+        List<Book> temp = new ArrayList<>();
+        for (Book b : booksLoaned) {
+            if (b.getId() != book.getId()) {
+                temp.add(b);
+            }
+        }
+        booksLoaned = temp;
     }
 
     public List<Book> getBooksLoaned() {

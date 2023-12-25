@@ -58,14 +58,10 @@ public class ReadingRoomService {
     }
 
     public void returnBook(Book book, Member member) {
-        if (member.getBooksLoaned().contains(book)) {
-            member.removeBook(book);
-            memberRepository.save(member);
-        }
-        if (book.getLoaner() != null) {
-            book.setLoaner(null);
-            bookRepository.save(book);
-        }
+        member.removeBook(book);
+        memberRepository.save(member);
+        book.setLoaner(null);
+        bookRepository.save(book);
         readingRoomRepository.getReadingRoom(book, member).ifPresent(readingRoom -> {
             readingRoom.setEnd_date(new Date());
             readingRoomRepository.save(readingRoom);
