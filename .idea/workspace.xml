@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Added books written by author to his model">
       <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AddNewAuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AddNewAuthorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AddNewBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AddNewBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703516006421</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added books written by author to his model">
+      <created>1703605117234</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703605117234</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,6 +363,7 @@
     <MESSAGE value="Added users list on the dashboard" />
     <MESSAGE value="Updated models to match documentation" />
     <MESSAGE value="Fixed book return" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed book return" />
+    <MESSAGE value="Added books written by author to his model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added books written by author to his model" />
   </component>
 </project>

@@ -53,22 +53,7 @@ public class DashboardController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        displayUsername();
-    }
 
-    private void displayUsername() {
-        Member loggedInUser = UserState.getInstance().getLoggedInUser();
-        if (loggedInUser != null) {
-            helloText.setText("Hello " + loggedInUser.getName() + "!");
-            List<Member> members = service.getLatestMembers(5);
-            System.out.println(members);
-            String text = "Last 5 logged in users: \n";
-            for (Member member : members) {
-                text += member.getName() + "\n";
-            }
-            userList.setText(text);
-
-        }
     }
 
     @Override
