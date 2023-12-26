@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import library.lib.backend.models.Member;
+import library.lib.backend.persistence.BookRepository;
 import library.lib.frontend.state.SpringContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ConfigurableApplicationContext;

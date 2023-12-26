@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.TextArea?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.AddNewBookController">
+   <bottom>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="addNewBook"  onAction="#addBookClick" layoutX="269.0" layoutY="347.0" mnemonicParsing="false" style="-fx-background-color: #964B00;" text="Add new book" textFill="WHITE" />
+            <Text layoutX="205.0" layoutY="53.0" text="Add new Book">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Text layoutX="107.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select author">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="authorComboBox" layoutX="241.0" layoutY="80.0" prefWidth="150.0" />
+            <Text layoutX="106.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="106.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="104.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="106.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table of contents">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="104.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Link to book cover" wrappingWidth="138.474609375">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="titleField" layoutX="241.0" layoutY="109.0" />
+            <TextField fx:id="categoryField" layoutX="241.0" layoutY="139.0" />
+            <TextField fx:id="linkToBookCoverField" layoutX="241.0" layoutY="172.0" />
+            <TextArea fx:id = "descriptionArea" layoutX="241.0" layoutY="201.0" prefHeight="55.0" prefWidth="149.0" />
+            <TextArea fx:id = "tableOfContentsArea" layoutX="241.0" layoutY="262.0" prefHeight="55.0" prefWidth="149.0" />
+            <Button fx:id="goToAdminPanel"  onAction="#goToAdminPanel" layoutX="46.0" layoutY="347.0" mnemonicParsing="false" style="-fx-background-color: #964B00;" text="Go to admin panel" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

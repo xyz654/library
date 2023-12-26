@@ -4,10 +4,19 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import library.lib.backend.models.Member;
+import library.lib.backend.models.Permissions;
+import library.lib.backend.services.MemberService;
+import library.lib.frontend.state.UserState;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 @Component
 public class NavbarController extends BaseController {
+
     @FXML
     private Text booksListNav;
 
@@ -19,6 +28,9 @@ public class NavbarController extends BaseController {
 
     @FXML
     private Text dashboardNav;
+
+    @FXML
+    private  Text adminNav;
 
     @FXML
     private void redirectToBooksList() {
@@ -38,6 +50,23 @@ public class NavbarController extends BaseController {
     @FXML
     private void redirectToDashboard() {
         redirectToScene("/library/lib/dashboard-view.fxml", "Books", (Stage) dashboardNav.getScene().getWindow());
+    }
+
+    @FXML
+    private void redirectToAdminPanel(){
+        redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) dashboardNav.getScene().getWindow());
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Member member = UserState.getInstance().getLoggedInUser();
+        if(member.getPermission() != Permissions.MEMBER){
+            adminNav.setOpacity(1);
+        }
+        else{
+            adminNav.setOpacity(0);
+        }
     }
 
     @Override

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.TextArea?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.AddNewAuthorController">
+   <bottom>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="addNewAuthor" layoutX="269.0" layoutY="347.0" mnemonicParsing="false" onAction="#addAuthorClick" style="-fx-background-color: #964B00;" text="Add new author" textFill="WHITE" />
+            <Text layoutX="205.0" layoutY="53.0" text="Add new Author">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Text layoutX="106.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="104.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nick">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="104.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="138.474609375">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="nameField" layoutX="241.0" layoutY="109.0" />
+            <TextField fx:id="nickField" layoutX="241.0" layoutY="139.0" />
+            <TextArea fx:id="descriptionArea" layoutX="241.0" layoutY="172.0" prefHeight="62.0" prefWidth="149.0" />
+            <Button fx:id="goToAdminPanel" layoutX="46.0" layoutY="347.0" mnemonicParsing="false" onAction="#goToAdminPanel" style="-fx-background-color: #964B00;" text="Go to admin panel" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

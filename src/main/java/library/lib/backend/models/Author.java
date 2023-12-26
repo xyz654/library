@@ -1,5 +1,6 @@
 package library.lib.backend.models;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @Entity
 @Setter
-public class Author {
+public class Author implements ReturnObject{
     @Id
     @GeneratedValue
     private int id;
@@ -41,6 +42,9 @@ public class Author {
         this.nick = nick;
     }
 
+    public Author(String name) {
+        this.name = name;
+    }
     public void addBook(Book book){
         booksWritten.add(book);
     }
@@ -49,4 +53,8 @@ public class Author {
         booksWritten.remove(book);
     }
 
+    @Override
+    public String toJson() throws JsonProcessingException {
+        return "Author{" + "id=" + id + ", name='" + name + ", nick='" + nick + ", description='" + description + '}';
+    }
 }
