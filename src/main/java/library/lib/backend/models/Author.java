@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Entity
 @Setter
-public class Author implements ReturnObject{
+public class Author implements ReturnObject {
     @Id
     @GeneratedValue
     private int id;
@@ -26,7 +26,7 @@ public class Author implements ReturnObject{
     private String nick;
 
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Book> booksWritten =new ArrayList();
+    private List<Book> booksWritten = new ArrayList();
 
     public Author() {
     }
@@ -47,11 +47,12 @@ public class Author implements ReturnObject{
     public Author(String name) {
         this.name = name;
     }
-    public void addBook(Book book){
+
+    public void addBook(Book book) {
         booksWritten.add(book);
     }
 
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
         booksWritten.remove(book);
     }
 

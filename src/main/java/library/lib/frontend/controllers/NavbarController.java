@@ -30,7 +30,7 @@ public class NavbarController extends BaseController {
     private Text dashboardNav;
 
     @FXML
-    private  Text adminNav;
+    private Text adminNav;
 
     @FXML
     private void redirectToBooksList() {
@@ -53,7 +53,7 @@ public class NavbarController extends BaseController {
     }
 
     @FXML
-    private void redirectToAdminPanel(){
+    private void redirectToAdminPanel() {
         redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) dashboardNav.getScene().getWindow());
     }
 
@@ -61,10 +61,9 @@ public class NavbarController extends BaseController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Member member = UserState.getInstance().getLoggedInUser();
-        if(member.getPermission() != Permissions.MEMBER){
+        if (member.getPermission() != Permissions.MEMBER) {
             adminNav.setOpacity(1);
-        }
-        else{
+        } else {
             adminNav.setOpacity(0);
         }
     }

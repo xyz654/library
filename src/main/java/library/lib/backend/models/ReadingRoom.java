@@ -28,11 +28,13 @@ public class ReadingRoom {
 
     public ReadingRoom() {
     }
+
     public ReadingRoom(Member member, Book book, Date start_date) {
         this.member = member;
         this.book = book;
         this.start_date = start_date;
     }
+
     public ReadingRoom(Member member, Book book, Date start_date, Date end_date) {
         this.member = member;
         this.book = book;

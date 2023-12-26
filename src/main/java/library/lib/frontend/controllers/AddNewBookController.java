@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
-public class AddNewBookController extends BaseController{
+public class AddNewBookController extends BaseController {
 
     @Autowired
     private BookService bookService;
@@ -52,40 +52,37 @@ public class AddNewBookController extends BaseController{
     private ComboBox<String> authorComboBox;
 
     @FXML
-    private void addBookClick(){
+    private void addBookClick() {
         String title = titleField.getText();
         String category = categoryField.getText();
         String linkToBookCover = linkToBookCoverField.getText();
         String description = descriptionArea.getText();
         String tableOfContents = tableOfContentsArea.getText();
         String authorName = authorComboBox.getValue();
-
-        System.out.println(authorName);
-        List <Author> author = authorService.getAuthorByName(authorName);
+        List<Author> author = authorService.getAuthorByName(authorName);
         Book book = new Book(title, author.get(0), description, linkToBookCover, tableOfContents, category);
         Member member = UserState.getInstance().getLoggedInUser();
-
         ReturnModel bookModel = bookService.addBook(book, member);
-        if(bookModel.code == ReturnCodes.OK){
+        if (bookModel.code == ReturnCodes.OK) {
             redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) goToAdminPanel.getScene().getWindow());
         }
-
     }
 
     @FXML
     public void goToAdminPanel() {
         redirectToScene("/library/lib/admin-view.fxml", "Books", (Stage) goToAdminPanel.getScene().getWindow());
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Author> authors = authorService.getAllAuthors();
         List<String> strAuthors = new ArrayList<>();
-        for (Author author : authors){
+        for (Author author : authors) {
             strAuthors.add(author.getName());
         }
         authorComboBox.getItems().setAll(strAuthors);
-
     }
+
     @Override
     protected Node getStage() {
         return null;
