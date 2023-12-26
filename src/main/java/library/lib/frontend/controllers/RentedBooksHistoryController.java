@@ -3,11 +3,8 @@ package library.lib.frontend.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -16,26 +13,24 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
-import library.lib.backend.models.Book;
-import library.lib.backend.services.BookService;
-import library.lib.frontend.state.SpringContext;
+import library.lib.backend.models.ReadingRoom;
+import library.lib.backend.services.ReadingRoomService;
+import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
-public class BookListController extends BaseController {
+public class RentedBooksHistoryController extends BaseController {
 
     @FXML
-    private ListView<Book> bookListView;
+    private ListView<ReadingRoom> bookListView;
 
     @Autowired
-    private BookService bookService;
+    private ReadingRoomService readingRoomService;
 
     private static final double IMAGE_FIT_WIDTH = 200;
     private static final double TEXT_FONT_SIZE = 24;
@@ -53,9 +48,9 @@ public class BookListController extends BaseController {
     }
 
     private void displayBooks() {
-        List<Book> books = bookService.getAllBooks();
-        ObservableList<Book> observableBooks = FXCollections.observableArrayList(books);
-        bookListView.setItems(observableBooks);
+        List<ReadingRoom> readingRooms = readingRoomService.getUserHistory(UserState.getInstance().getLoggedInUser());
+        ObservableList<ReadingRoom> observableReadingRooms = FXCollections.observableArrayList(readingRooms);
+        bookListView.setItems(observableReadingRooms);
     }
 
     private void setupListView() {
@@ -64,35 +59,36 @@ public class BookListController extends BaseController {
         bookListView.setCellFactory(createListCellFactory());
     }
 
-    private Callback<ListView<Book>, ListCell<Book>> createListCellFactory() {
+    private Callback<ListView<ReadingRoom>, ListCell<ReadingRoom>> createListCellFactory() {
         return param -> new CustomListCell();
     }
 
-    private class CustomListCell extends ListCell<Book> {
+    private class CustomListCell extends ListCell<ReadingRoom> {
         @Override
-        protected void updateItem(Book item, boolean empty) {
+        protected void updateItem(ReadingRoom item, boolean empty) {
             super.updateItem(item, empty);
             if (item != null && !empty) {
-                setGraphic(createBookCell(item, getIndex()));
-                setOnMouseClicked(event -> openBookDetails(item));
+                setGraphic(createReadingRoomCell(item, getIndex()));
             } else {
                 setGraphic(null);
             }
         }
     }
 
-    private GridPane createBookCell(Book item, int index) {
+    private GridPane createReadingRoomCell(ReadingRoom item, int index) {
         GridPane gridPane = new GridPane();
 
-        ImageView imageView = new ImageView(new Image(item.getBookCover()));
+        ImageView imageView = new ImageView(new Image(item.getBook().getBookCover()));
         imageView.setFitWidth(IMAGE_FIT_WIDTH);
         imageView.setPreserveRatio(true);
         gridPane.add(imageView, 0, 0);
 
         Text text = new Text(
-                "Title: " + item.getTitle() +
-                        "\nAuthor: " + item.getAuthor().getName() +
-                        "\nCategory: " + (item.getCategory() != null ? item.getCategory() : UNDEFINED_CATEGORY)
+                "Title: " + item.getBook().getTitle() +
+                        "\nAuthor: " + item.getBook().getAuthor().getName() +
+                        "\nCategory: " + (item.getBook().getCategory() != null ? item.getBook().getCategory() : UNDEFINED_CATEGORY) +
+                        "\nFrom: " + (item.getStart_date()) +
+                        "\nTo: " + (item.getEnd_date())
         );
         text.setStyle("-fx-font-size: " + TEXT_FONT_SIZE + "px; -fx-fill: " + TEXT_FILL_COLOR + ";");
         GridPane.setMargin(text, TEXT_MARGIN);
@@ -102,22 +98,6 @@ public class BookListController extends BaseController {
         gridPane.setStyle("-fx-padding: " + PANE_PADDING + "; -fx-background-color: " + backgroundColor + ";");
 
         return gridPane;
-    }
-
-    private void openBookDetails(Book selectedBook) {
-        try {
-            ConfigurableApplicationContext springContext = SpringContext.getInstance().getContext();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/book-details-view.fxml"));
-            loader.setControllerFactory(springContext::getBean);
-            Parent root = loader.load();
-
-            BookDetailsController detailsController = loader.getController();
-            detailsController.setBookDetails(selectedBook);
-            Scene scene = bookListView.getScene();
-            scene.setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

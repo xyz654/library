@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
@@ -16,10 +16,10 @@ public class ReadingRoom {
     @Id
     @GeneratedValue
     private int id;
-    @OneToOne
+    @ManyToOne
     private Member member;
 
-    @OneToOne
+    @ManyToOne
     private Book book;
 
     private Date start_date;

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +29,10 @@ public class Member implements ReturnObject {
 
     private String password;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Book> booksLoaned = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Rate> reviews = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
@@ -59,7 +60,13 @@ public class Member implements ReturnObject {
     }
 
     public void removeBook(Book book) {
-        booksLoaned.remove(book);
+        List<Book> temp = new ArrayList<>();
+        for (Book b : booksLoaned) {
+            if (b.getId() != book.getId()) {
+                temp.add(b);
+            }
+        }
+        booksLoaned = temp;
     }
 
     public List<Book> getBooksLoaned() {
