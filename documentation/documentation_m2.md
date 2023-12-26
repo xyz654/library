@@ -34,11 +34,11 @@ Baza danych zawiera pięć tabel obsługujących funkcjonalność aplikacji. Tab
 
 ## Widoki
 
-**Widok użytkownika** - będzie udostępniał najlepsze statystyki, możliwość oceny czytanych książek oraz ich listę. Z widoku użytkownika będzie możliwość przejścia do widoku książek. \
+**Widok użytkownika** - będzie udostępniał najlepsze statystyki, możliwość oceny czytanych książek. Aktualnie udostępnia ich listę. Z widoku użytkownika można przejść do widoku konkretnej książki. \
 **Widok pracownika** - będzie umożliwiał rozpoczęcie wizyty czytelnika jak i jej zakończenie, ponadto będzie dostarczał możliwość aktualnego podglądu czytelni - użytkowników i posiadanych przez nich książek. \
-**Widok administratora** - będzie umożliwiał dodanie nowej książki do czytelni oraz będą dostępne wszystkie funkcje administratora oraz usunięcie użytkownika. \
-**Widok książek** - pozwoli przeglądać dostępne pozycje, wyświetlenia wszystkich książek podanego autora lub wybranej kategorii. \
-**Widok książki** - pozwoli wyświetlić konkretną pozycję, jej autora, udostępni możliwość sprawdzenia okładki i spisu treści wybranej książki.
+**Widok administratora** - umożliwia dodanie nowej książki do czytelni oraz nowego autora. Ma możliwość zmiany funkcji każdego użytkownika. \
+**Widok książek** - pozwala przeglądać dostępne pozycje, będzie umożliwiał wyświetlenie wszystkich książek podanego autora lub wybranej kategorii. \
+**Widok książki** - pozwala wyświetlić konkretną pozycję, jej autora, udostępnia możliwość sprawdzenia okładki i spisu treści wybranej książki.
 
 ### Już zaimplementowane:
 
@@ -69,20 +69,20 @@ void showErrorMessage(String message)\
 void handleSuccessfulLogin(Member loggedInUser)\
 Node getStage()
 
-**AddNewAuthorController** - klasa dziedzicząca po BaseController służąca do dodawania nowego autora
+**AddNewAuthorController** - klasa dziedzicząca po BaseController służąca do dodawania nowego autora. \
 **Metody:**\
 void goToAdminPanel()\
 void addAuthorClick()\
 Node getStage()
 
-**AddNewBookController** - klasa dziedzicząca po BaseController służąca do dodawania nowej książki
+**AddNewBookController** - klasa dziedzicząca po BaseController służąca do dodawania nowej książki dla istniejących już w bazie autorów. \
 **Metody:**\
 void goToAdminPanel()\
 void addBookClick()\
 void initialize(URL url, ResourceBundle resourceBundle)\
 Node getStage()
 
-**AdminPanelController** - klasa dziedzicząca po BaseController służąca do obsługi wyświetlenia możliwości akcji dostępnych dla administratora\
+**AdminPanelController** - klasa dziedzicząca po BaseController służąca do obsługi wyświetlenia możliwości akcji dostępnych dla administratora. \
 **Metody:**\
 void redirectToMemberList()\
 void redirectToAddBook()\
@@ -188,8 +188,6 @@ List<ReadingRoom> getCurrentRentedBooksByMember(Member member)
 ## Persystencje
 
 **StatisticsRepository** - rozszerzy interfejs JpaRepository o: _getBestBooks_ (pobierze z bazy najlepsze książki porównując punkty), _getBestOpinions_ (pobierze najlepsze książki wraz z ich opisowymi opiniami). \
-**BookRepository** - rozszerzy interfejs JpaRepository o: _findByAuthor_ (pobierze z bazy książki podanego autora), _findByTitle_ (pobierze z bazy książke o danym tytule). \
-**ReadingRoomRepository** - rozszerzy interfejs JpaRepository o: _getActualVisitByName_ (zwróci z bazy dane aktualnie trwającej wizyty danego czytelnika), _findActualVisits_ (zwróci z bazy wszystkie aktualnie trwające wizyty).
 
 ### Już zaimplementowane:
 
@@ -296,7 +294,7 @@ void main(String[] args)
 
 ![Alt text](image-5.png)
 
-### Widok po listy książek
+### Widok listy książek
 
 ![Alt text](image-10.png)
 
