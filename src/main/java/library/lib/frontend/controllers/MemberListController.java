@@ -104,14 +104,18 @@ public class MemberListController extends BaseController {
         worker.setToggleGroup(group);
         member.setToggleGroup(group);
 
-        if(item.getPermission() == Permissions.MEMBER){ member.setSelected(true);
-            itemPermission.set("Member");}
-        if(item.getPermission() == Permissions.WORKER) {
+        if (item.getPermission() == Permissions.MEMBER) {
+            member.setSelected(true);
+            itemPermission.set("Member");
+        }
+        if (item.getPermission() == Permissions.WORKER) {
             worker.setSelected(true);
             itemPermission.set("Worker");
         }
-        if(item.getPermission() == Permissions.ADMIN){ admin.setSelected(true);
-        itemPermission.set("Admin");}
+        if (item.getPermission() == Permissions.ADMIN) {
+            admin.setSelected(true);
+            itemPermission.set("Admin");
+        }
 
         worker.setOnAction(event -> {
             memberService.setPermission(item, Permissions.WORKER);
@@ -128,8 +132,8 @@ public class MemberListController extends BaseController {
             itemPermission.set("Member");
         });
 
-        gridPane.add(admin, 2,0);
-        gridPane.add(worker, 3,0);
+        gridPane.add(admin, 2, 0);
+        gridPane.add(worker, 3, 0);
         gridPane.add(member, 4, 0);
         Text text = new Text();
 

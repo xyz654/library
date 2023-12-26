@@ -32,13 +32,13 @@ public class AddNewAuthorController extends BaseController {
     private Button goToAdminPanel;
 
     @FXML
-    private void addAuthorClick(){
+    private void addAuthorClick() {
         String name = nameField.getText();
         String nick = nickField.getText();
         String description = descriptionArea.getText();
         Author author = new Author(name, nick, description);
         ReturnModel authorModel = authorService.addAuthor(author);
-        if(authorModel.code == ReturnCodes.OK){
+        if (authorModel.code == ReturnCodes.OK) {
             redirectToScene("/library/lib/add-new-book.fxml", "Add new book", (Stage) goToAdminPanel.getScene().getWindow());
         }
     }
@@ -47,6 +47,7 @@ public class AddNewAuthorController extends BaseController {
     public void goToAdminPanel() {
         redirectToScene("/library/lib/admin-view.fxml", "Books", (Stage) goToAdminPanel.getScene().getWindow());
     }
+
     @Override
     protected Node getStage() {
         return null;
