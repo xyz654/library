@@ -31,22 +31,12 @@ public class BookService {
         if (member.getPermission() != Permissions.ADMIN && member.getPermission() != Permissions.WORKER) {
             return new ReturnModel(null, "User not authorized", ReturnCodes.USER_ERROR);
         }
+        bookRepository.save(book);
+        Author author = book.getAuthor();
+        author.addBook(book);
+        authorRepository.save(author);
+        return new ReturnModel(book, "Book added", ReturnCodes.OK);
 
-//        try {
-
-//            List<Author> authors = authorRepository.findByName(book.getAuthor().getName());
-//            Author author = authors.size() > 0 ? authors.get(0) : null;
-//            if (author == null) {
-//                authorRepository.save(book.getAuthor());
-//            } else {
-//                book.setAuthor(author);
-//            }
-            bookRepository.save(book);
-            return new ReturnModel(book, "Book added", ReturnCodes.OK);
-//        } catch (Exception e) {
-//            log.error(String.valueOf(e));
-//            return new ReturnModel(null, "Error", ReturnCodes.ERROR);
-//        }
     }
 
     public List<Book> getFreeBooks() {

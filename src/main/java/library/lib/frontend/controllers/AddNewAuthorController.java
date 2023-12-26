@@ -7,6 +7,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import library.lib.backend.models.Author;
+import library.lib.backend.models.ReturnCodes;
+import library.lib.backend.models.ReturnModel;
 import library.lib.backend.services.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,7 +37,10 @@ public class AddNewAuthorController extends BaseController {
         String nick = nickField.getText();
         String description = descriptionArea.getText();
         Author author = new Author(name, nick, description);
-        authorService.addAuthor(author);
+        ReturnModel authorModel = authorService.addAuthor(author);
+        if(authorModel.code == ReturnCodes.OK){
+            redirectToScene("/library/lib/add-new-book.fxml", "Add new book", (Stage) goToAdminPanel.getScene().getWindow());
+        }
     }
 
     @FXML

@@ -5,9 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import library.lib.backend.models.Author;
-import library.lib.backend.models.Book;
-import library.lib.backend.models.Member;
+import library.lib.backend.models.*;
 import library.lib.backend.services.AuthorService;
 import library.lib.backend.services.BookService;
 import library.lib.backend.services.MemberService;
@@ -67,7 +65,10 @@ public class AddNewBookController extends BaseController{
         Book book = new Book(title, author.get(0), description, linkToBookCover, tableOfContents, category);
         Member member = UserState.getInstance().getLoggedInUser();
 
-        bookService.addBook(book, member);
+        ReturnModel bookModel = bookService.addBook(book, member);
+        if(bookModel.code == ReturnCodes.OK){
+            redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) goToAdminPanel.getScene().getWindow());
+        }
 
     }
 
