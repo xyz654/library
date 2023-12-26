@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Added books written by author to his model">
-      <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
+    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Added users list on the dashboard">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
