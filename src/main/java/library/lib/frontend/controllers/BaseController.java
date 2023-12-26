@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import library.lib.backend.models.Member;
 import library.lib.frontend.state.SpringContext;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +16,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@Slf4j
 @Component
 public abstract class BaseController implements Initializable {
+
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(BaseController.class);
 
     protected void redirectToScene(String scenePath, String title, Stage stage) {
         try {

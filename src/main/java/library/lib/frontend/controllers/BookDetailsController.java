@@ -74,10 +74,8 @@ public class BookDetailsController extends BaseController {
     @FXML
     private void rentBook() {
         if (bookDetails.getLoaner() != null) return;
-;
         Member user = UserState.getInstance().getLoggedInUser();
         ReturnModel returnModel = readingRoomService.rentBook(bookDetails, user);
-
         if (returnModel.code == ReturnCodes.OK) {
             bookDetails = bookService.getBookById(bookDetails.getId());
             Optional<Member> updatedMember = memberService.getMember(user);

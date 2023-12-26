@@ -1,19 +1,22 @@
 package library.lib.backend.models;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Getter;
 import lombok.Setter;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Entity
 @Setter
-public class Author {
+public class Author implements ReturnObject {
     @Id
     @GeneratedValue
     private int id;
@@ -22,8 +25,8 @@ public class Author {
     private String description;
     private String nick;
 
-    @OneToMany
-    private List<Book> booksWritten =new ArrayList();
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Book> booksWritten = new ArrayList();
 
     public Author() {
     }
@@ -41,12 +44,20 @@ public class Author {
         this.nick = nick;
     }
 
-    public void addBook(Book book){
+    public Author(String name) {
+        this.name = name;
+    }
+
+    public void addBook(Book book) {
         booksWritten.add(book);
     }
 
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
         booksWritten.remove(book);
     }
 
+    @Override
+    public String toJson() throws JsonProcessingException {
+        return "Author{" + "id=" + id + ", name='" + name + ", nick='" + nick + ", description='" + description + '}';
+    }
 }

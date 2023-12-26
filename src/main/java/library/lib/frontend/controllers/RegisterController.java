@@ -8,7 +8,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.*;
-import library.lib.backend.services.BookService;
 import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
 import library.lib.frontend.utils.Validator;
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.List;
 
 
 @Component
@@ -38,8 +36,6 @@ public class RegisterController extends BaseController {
     @FXML
     private PasswordField passwordField;
 
-    @FXML
-    private Text loginLink;
 
     @FXML
     private void onKeyPressed() { hideErrorMessage();}
@@ -51,7 +47,7 @@ public class RegisterController extends BaseController {
     }
 
     @FXML
-    private void onRegisterClick() throws IOException, InterruptedException {
+    private void onRegisterClick(){
         String username = usernameField.getText();
         String password = passwordField.getText();
         String email = emailField.getText();

@@ -5,11 +5,13 @@ import library.lib.backend.persistence.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 @Slf4j
 public class MemberService {
     private final MemberRepository memberRepository;
@@ -68,5 +70,13 @@ public class MemberService {
 
     public Optional<Member> getMember(Member member) {
         return memberRepository.findById(member.getId());
+    }
+
+    public List<Member> getAllMembers(){
+        return memberRepository.findAll();
+    }
+
+    public void setPermission(Member member, Permissions permission){
+        memberRepository.updateMemberPermission(member.getId(), permission);
     }
 }
