@@ -22,7 +22,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query("Select b from Book b where b.category = ?1")
     List<Book> findByCategory(Category category);
 
-    @Query("Select b from Book b where b.loaner = null")
+    @Query("Select b from Book b where b.loaner is null")
     List<Book> findByNullMember();
 
     Optional<Book> findById(int id);

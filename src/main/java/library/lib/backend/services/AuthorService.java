@@ -29,6 +29,9 @@ public class AuthorService {
     }
 
     public ReturnModel addAuthor(Author author){
+        if(getAuthorByName(author.getName()).size() != 0){
+            return new ReturnModel(null, "Author exist", ReturnCodes.USER_ERROR);
+        }
         authorRepository.save(author);
         return new ReturnModel(author, "Author added", ReturnCodes.OK);
     }

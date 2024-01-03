@@ -5,7 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import library.lib.backend.models.Member;
+import library.lib.backend.models.Permissions;
+import library.lib.frontend.state.UserState;
 import org.springframework.stereotype.Component;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 @Component
 public class AdminPanelController extends BaseController {
@@ -40,6 +46,16 @@ public class AdminPanelController extends BaseController {
     @FXML
     private void redirectToDashboard(){
         redirectToScene("/library/lib/dashboard-view.fxml", "Dashboard", (Stage) dashboardButton.getScene().getWindow());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Member member = UserState.getInstance().getLoggedInUser();
+        if (member.getPermission() == Permissions.WORKER) {
+            manageMembersButton.setOpacity(0);
+        } else {
+            manageMembersButton.setOpacity(1);
+        }
     }
     @Override
     protected Node getStage() {
