@@ -4,42 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="870bf132-9f9c-484b-bd00-142df0fa6593" name="Changes" comment="Merge conflict and whitespaces">
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Filters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Statistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/RatesRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/EmailSenderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/RateService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AddNewCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/library/lib/add-new-category.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/BookConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/configurators/BookConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Rate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Rate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/ReadingRoomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/persistence/ReadingRoomRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AddNewBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AddNewBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AdminPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/AdminPanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/add-new-book.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/add-new-book.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/admin-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/admin-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/book-details-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/book-details-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="870bf132-9f9c-484b-bd00-142df0fa6593" name="Changes" comment="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -322,7 +287,7 @@
       <workItem from="1702477697152" duration="2136000" />
       <workItem from="1703515090822" duration="1530000" />
       <workItem from="1703521626726" duration="618000" />
-      <workItem from="1704288029495" duration="8798000" />
+      <workItem from="1704288029495" duration="9547000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>
@@ -394,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703605117234</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities">
+      <created>1704298115298</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704298115298</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,6 +380,7 @@
     <MESSAGE value="Updated models to match documentation" />
     <MESSAGE value="Fixed book return" />
     <MESSAGE value="Added books written by author to his model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added books written by author to his model" />
+    <MESSAGE value="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities" />
   </component>
 </project>
