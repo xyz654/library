@@ -1,12 +1,14 @@
 package library.lib.backend.models;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Rate {
+public class Rate implements ReturnObject {
     @Id
     @GeneratedValue
     private int id;
@@ -48,5 +50,10 @@ public class Rate {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toJson() throws JsonProcessingException {
+        return null;
     }
 }

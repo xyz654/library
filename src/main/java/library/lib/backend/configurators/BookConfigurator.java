@@ -2,9 +2,11 @@ package library.lib.backend.configurators;
 
 import library.lib.backend.models.Author;
 import library.lib.backend.models.Book;
+import library.lib.backend.models.Category;
 import library.lib.backend.models.Member;
 import library.lib.backend.persistence.AuthorRepository;
 import library.lib.backend.persistence.BookRepository;
+import library.lib.backend.persistence.CategoryRepository;
 import library.lib.backend.persistence.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,9 +15,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BookConfigurator {
     @Autowired
-    CommandLineRunner commandLineRunner(AuthorRepository authorRepository, BookRepository bookRepository) {
+    CommandLineRunner commandLineRunner(AuthorRepository authorRepository, BookRepository bookRepository, CategoryRepository categoryRepository, MemberRepository memberRepository) {
         return args ->{
            if(bookRepository.count() == 0){
+               Category category = new Category("Powieść");
                Author author = new Author("Adam Mickiewicz",
                        "Polish poet",
                        "Mickiewicz");
@@ -24,13 +27,14 @@ public class BookConfigurator {
                Book book = new Book("Pan Tadeusz", author,
                        "Pan taduesz",
                        "https://ecsmedia.pl/cdn-cgi/image/format=webp,/c/pan-tadeusz-b-iext135008338.jpg",
-                       "cos ", "Powieść");
+                       "cos ", category);
                Book book2 = new Book(
                        "Quo Vadis",
                           author2,
                           "Quo Vadis",
                        "https://ecsmedia.pl/c/quo-vadis-b-iext123393340.jpg",
-                       "cos 2", "Powieść");
+                       "cos 2", category);
+                categoryRepository.save(category);
                 authorRepository.save(author);
                 authorRepository.save(author2);
                 bookRepository.save(book);

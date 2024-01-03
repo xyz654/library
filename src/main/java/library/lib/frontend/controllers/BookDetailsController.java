@@ -43,6 +43,10 @@ public class BookDetailsController extends BaseController {
 
     @FXML
     private Button rentBook;
+    @FXML
+    private Button reserveBook;
+    @FXML
+    private Text awaitingMembersLabel;
 
     @Autowired
     ReadingRoomService readingRoomService;
@@ -58,6 +62,7 @@ public class BookDetailsController extends BaseController {
     public void setBookDetails(Book book) {
         this.bookDetails = book;
         updateView();
+        updateReserveButtonText(bookDetails);
     }
 
     private void updateView() {
@@ -66,6 +71,16 @@ public class BookDetailsController extends BaseController {
             authorLabel.setText(bookDetails.getAuthor().getName());
             descriptionLabel.setText(bookDetails.getDescription());
             categoryLabel.setText("Category: " + (bookDetails.getCategory() != null ? bookDetails.getCategory() : "Undefined"));
+            String awaitingLabel = "Awaiting users: " + bookDetails.getAwaitingMembers().size();
+            List<Member> awaitingMembers = bookDetails.getAwaitingMembers();
+            if(awaitingMembers.size()> 0){
+                for(Member member : awaitingMembers){
+                    if(member.getId() == UserState.getInstance().getLoggedInUser().getId()){
+                        awaitingLabel += "(Including you) " ;
+                    }
+                }
+            }
+            awaitingMembersLabel.setText(awaitingLabel);
             coverImageView.setImage(new Image(bookDetails.getBookCover()));
             updateRentButtonText(bookDetails);
         }
@@ -83,6 +98,17 @@ public class BookDetailsController extends BaseController {
             updateRentButtonText(bookDetails);
         }
     }
+    @FXML
+    private void reserveBook(){
+        Member user = UserState.getInstance().getLoggedInUser();
+        ReturnModel returnModel = readingRoomService.reserveBook(bookDetails, user);
+        if (returnModel.code == ReturnCodes.OK) {
+            bookDetails = bookService.getBookById(bookDetails.getId());
+            Optional<Member> updatedMember = memberService.getMember(user);
+            updatedMember.ifPresent(member -> UserState.getInstance().setLoggedInUser(member));
+            updateReserveButtonText(bookDetails);
+        }
+    }
 
     public void goBackToBookList() {
         redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) goBack.getScene().getWindow());
@@ -92,9 +118,37 @@ public class BookDetailsController extends BaseController {
         if (bookDetails.getLoaner() == null) {
             rentBook.setText("Rent Book");
             rentBook.setStyle("-fx-background-color: #B97A57; -fx-text-fill: #FFFFFF");
+            reserveBook.setOpacity(0);
         } else {
             rentBook.setText("Book is already rented");
             rentBook.setStyle("-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF");
+            reserveBook.setOpacity(1);
+        }
+    }
+
+    private void updateReserveButtonText(Book bookDetails) {
+        if (bookDetails.getLoaner() == null) {
+            reserveBook.setText("Reserve Book");
+            reserveBook.setStyle("-fx-background-color: #B97A57; -fx-text-fill: #FFFFFF");
+            rentBook.setOpacity(0);
+        } else {
+            for(Member member : bookDetails.getAwaitingMembers()){
+                if(member.getId() == UserState.getInstance().getLoggedInUser().getId()){
+                    reserveBook.setText("Book is already reserved by you");
+                    reserveBook.setStyle("-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF");
+                    rentBook.setOpacity(1);
+                    return;
+                }
+            }
+            if(bookDetails.getLoaner().getId() == UserState.getInstance().getLoggedInUser().getId()){
+                reserveBook.setText("Book is already rented by you");
+            }
+            else{
+                reserveBook.setText("Reserve Book");
+            }
+            reserveBook.setStyle("-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF");
+            rentBook.setOpacity(1);
+
         }
     }
 

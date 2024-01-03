@@ -40,6 +40,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
+            <ComboBox fx:id="categoryComboBox" layoutX="241.0" layoutY="139.0" prefWidth="150.0" />
             <Text layoutX="106.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table of contents">
                <font>
                   <Font size="14.0" />
@@ -51,7 +52,6 @@
                </font>
             </Text>
             <TextField fx:id="titleField" layoutX="241.0" layoutY="109.0" />
-            <TextField fx:id="categoryField" layoutX="241.0" layoutY="139.0" />
             <TextField fx:id="linkToBookCoverField" layoutX="241.0" layoutY="172.0" />
             <TextArea fx:id = "descriptionArea" layoutX="241.0" layoutY="201.0" prefHeight="55.0" prefWidth="149.0" />
             <TextArea fx:id = "tableOfContentsArea" layoutX="241.0" layoutY="262.0" prefHeight="55.0" prefWidth="149.0" />

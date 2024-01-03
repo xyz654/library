@@ -2,6 +2,7 @@ package library.lib.backend.persistence;
 
 import library.lib.backend.models.Author;
 import library.lib.backend.models.Book;
+import library.lib.backend.models.Category;
 import library.lib.backend.models.ReturnModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,7 +20,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> findByAuthor(Author author);
 
     @Query("Select b from Book b where b.category = ?1")
-    List<Book> findByCategory(String category);
+    List<Book> findByCategory(Category category);
 
     @Query("Select b from Book b where b.loaner = null")
     List<Book> findByNullMember();

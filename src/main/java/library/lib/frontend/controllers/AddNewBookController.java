@@ -50,11 +50,13 @@ public class AddNewBookController extends BaseController {
 
     @FXML
     private ComboBox<String> authorComboBox;
+    @FXML
+    private ComboBox<String> categoryComboBox;
 
     @FXML
     private void addBookClick() {
         String title = titleField.getText();
-        String category = categoryField.getText();
+        Category category = bookService.getCategoryByName(categoryComboBox.getValue());
         String linkToBookCover = linkToBookCoverField.getText();
         String description = descriptionArea.getText();
         String tableOfContents = tableOfContentsArea.getText();
@@ -81,6 +83,12 @@ public class AddNewBookController extends BaseController {
             strAuthors.add(author.getName());
         }
         authorComboBox.getItems().setAll(strAuthors);
+        List<Category> categories = bookService.getAllCategories();
+        List<String> strCategories = new ArrayList<>();
+        for (Category category : categories) {
+            strCategories.add(category.getName());
+        }
+        categoryComboBox.getItems().setAll(strCategories);
     }
 
     @Override
