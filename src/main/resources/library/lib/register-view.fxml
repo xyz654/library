@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.RegisterController">
+    <left>
+        <AnchorPane prefHeight="400.0" prefWidth="228.0" style="-fx-background-color: #b97a57;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="407.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../assets/logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </left>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefWidth="200.0">
+               <children>
+                      <VBox alignment="CENTER" prefHeight="281.0" prefWidth="260.0">
+                          <children>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="260.0">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="260.0">
+                                 <children>
+                                    <Label text="Username">
+                                       <font>
+                                          <Font name="Lato Regular" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="usernameField" onKeyPressed="#onKeyPressed">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="260.0">
+                           <children>
+                                    <VBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="260.0">
+                                        <children>
+                                            <Label text="Email">
+                                                <font>
+                                                    <Font name="Lato Regular" size="14.0" />
+                                                </font>
+                                            </Label>
+                                            <TextField fx:id="emailField" onKeyPressed="#onKeyPressed">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </TextField>
+                                        </children>
+                                    </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="260.0">
+                           <children>
+                                    <VBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="260.0">
+                                        <children>
+                                            <Label text="Password">
+                                                <font>
+                                                    <Font name="Lato Regular" size="14.0" />
+                                                </font>
+                                            </Label>
+                                            <PasswordField fx:id="passwordField" onKeyPressed="#onKeyPressed">
+                                                <font>
+                                                    <Font size="14.0" />
+                                                </font>
+                                            </PasswordField>
+                                        </children>
+                                    </VBox>
+                           </children>
+                        </HBox>
+                              <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                  <children>
+                                      <Text fx:id="loginLink" fill="BLUE" onMouseClicked="#redirectToLogin" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account? Login." textAlignment="CENTER" wrappingWidth="150.0">
+                                          <font>
+                                              <Font name="Lato Bold" size="10.0" />
+                                          </font>
+                                          <VBox.margin>
+                                              <Insets top="16.0" />
+                                          </VBox.margin>
+                                          <cursor>
+                                              <Cursor fx:constant="HAND" />
+                                          </cursor>
+                                      </Text>
+                                      <Button fx:id="registerButton" mnemonicParsing="false" onAction="#onRegisterClick" prefHeight="25.0" prefWidth="260.0" style="-fx-background-color: #964B00;" text="Register" textFill="WHITE">
+                                          <VBox.margin>
+                                              <Insets top="12.0" />
+                                          </VBox.margin>
+                                          <font>
+                                              <Font name="Lato Bold" size="16.0" />
+                                          </font>
+                                          <cursor>
+                                              <Cursor fx:constant="HAND" />
+                                          </cursor>
+                                      </Button>
+                                      <Text fx:id="errorMessage" fill="RED" layoutX="69.0" layoutY="36.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Something goes wrong. Try again later." wrappingWidth="150.0">
+                                          <font>
+                                              <Font name="Lato Bold" size="10.0" />
+                                          </font>
+                                          <VBox.margin>
+                                              <Insets top="12.0" />
+                                          </VBox.margin>
+                                      </Text>
+                                  </children>
+                              </VBox>
+                          </children>
+                      </VBox>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

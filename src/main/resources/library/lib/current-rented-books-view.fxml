@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.CurrentRentedBooksController" alignment="CENTER">
+    <fx:include source="navbar.fxml" />
+    <Text style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-fill: #333333;" text="Current Rented Books" />
+    <HBox style="-fx-padding: 10 30 30 30;">
+        <ListView fx:id="bookListView" prefHeight="600.0" prefWidth="800.0" />
+    </HBox>
+</VBox>
