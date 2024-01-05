@@ -79,7 +79,7 @@ public class RegisterController extends BaseController {
     @Override
     public void handleSuccessfulLogin(Member registeredUser) {
         UserState.getInstance().setLoggedInUser(registeredUser);
-        redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
+        redirectToScene("/library/lib/book-list-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
     }
 
     @Override

@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="Added users list on the dashboard">
+    <list default="true" id="870bf132-9f9c-484b-bd00-142df0fa6593" name="Changes" comment="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/dashboard-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/models/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +59,8 @@
       <list>
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -92,14 +97,14 @@
     &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/improving__views__and__adding__global__user&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Studia/twProjekt/jk-sr-0940-bananowce/library.mv.db&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Studia/twProjekt/jk-sr-0940-bananowce/src/main/resources/library/lib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;af5206e05ba08bfb63b745fe8b8e088a&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;5c36bf69f328913fe7acd3a0da96998b&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -109,6 +114,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Studia\twProjekt\jk-sr-0940-bananowce\src\main\resources\library\lib" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -116,6 +124,7 @@
       <recent name="library.lib.Backend.models" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="library.lib.frontend.controllers" />
       <recent name="library.lib.backend.persistence" />
     </key>
   </component>
@@ -237,6 +246,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LibraryApp (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="library.lib.lib.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="library.lib.LibraryApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LibraryApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="lib.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="library.lib.LibraryApp" />
@@ -257,7 +273,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d76ab374-9028-423c-b1fa-b65920c435f9" name="Changes" comment="" />
+      <changelist id="870bf132-9f9c-484b-bd00-142df0fa6593" name="Changes" comment="Merge conflict and whitespaces" />
       <created>1701439175987</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -279,6 +295,10 @@
       <workItem from="1702477697152" duration="2136000" />
       <workItem from="1703515090822" duration="1530000" />
       <workItem from="1703521626726" duration="618000" />
+      <workItem from="1704288029495" duration="9547000" />
+      <workItem from="1704306083921" duration="18000" />
+      <workItem from="1704392476652" duration="626000" />
+      <workItem from="1704440198178" duration="1310000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>
@@ -350,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703605117234</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities">
+      <created>1704298115298</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704298115298</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,6 +391,7 @@
     <MESSAGE value="Updated models to match documentation" />
     <MESSAGE value="Fixed book return" />
     <MESSAGE value="Added books written by author to his model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added books written by author to his model" />
+    <MESSAGE value="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities" />
   </component>
 </project>

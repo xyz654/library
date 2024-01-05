@@ -40,6 +40,10 @@ public class AdminPanelController extends BaseController {
         redirectToScene("/library/lib/add-new-author.fxml", "Add new author", (Stage) addAuthorButton.getScene().getWindow());
     }
     @FXML
+    private void redirectToAddCategory(){
+        redirectToScene("/library/lib/add-new-category.fxml", "Add new author", (Stage) addAuthorButton.getScene().getWindow());
+    }
+    @FXML
     private void redirectToDashboard(){
         redirectToScene("/library/lib/dashboard-view.fxml", "Dashboard", (Stage) dashboardButton.getScene().getWindow());
     }

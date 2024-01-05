@@ -5,13 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +29,15 @@ public class Member implements ReturnObject {
     @OneToMany(fetch = FetchType.EAGER)
     private List<Rate> reviews = new ArrayList<>();
 
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Book> requestedBooks = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private Permissions permission = Permissions.MEMBER;
 
+    private boolean notifications = true;
+    @OneToOne
+    private Category favouriteCategory;
 
     public Member() {
     }
@@ -67,6 +67,24 @@ public class Member implements ReturnObject {
             }
         }
         booksLoaned = temp;
+    }
+
+    public void addRequestedBook(Book book) {
+        requestedBooks.add(book);
+    }
+
+    public void removeRequestedBook(Book book) {
+        List<Book> temp = new ArrayList<>();
+        for (Book b : requestedBooks) {
+            if (b.getId() != book.getId()) {
+                temp.add(b);
+            }
+        }
+        requestedBooks = temp;
+    }
+
+    public boolean checkForNotifications() {
+        return notifications;
     }
 
     public List<Book> getBooksLoaned() {

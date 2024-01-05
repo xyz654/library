@@ -26,18 +26,20 @@ public class Book implements ReturnObject {
     private Author author;
     private String description;
     private String bookCover;
-    private String category;
+    @OneToOne
+    private Category category;
     @OneToOne
     private Member loaner;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Rate> reviews = new ArrayList<>();
-
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Member> awaitingMembers = new ArrayList<>();
     private String tableOfContents;
 
     public Book() {
     }
 
-    public Book(String title, Author author, String description, String bookCover, String tableOfContents, String category) {
+    public Book(String title, Author author, String description, String bookCover, String tableOfContents, Category category) {
         this.title = title;
         this.author = author;
         this.description = description;
@@ -48,6 +50,20 @@ public class Book implements ReturnObject {
 
     public void addReview(Rate review) {
         reviews.add(review);
+    }
+
+    public void addAwaitingMember(Member member) {
+        awaitingMembers.add(member);
+    }
+
+    public void removeAwaitingMember(Member member) {
+        List<Member> newAwaitingMembers = new ArrayList<>();
+        for (Member m : awaitingMembers) {
+            if (m.getId() != member.getId()) {
+                newAwaitingMembers.add(m);
+            }
+        }
+        awaitingMembers = newAwaitingMembers;
     }
 
     @Override

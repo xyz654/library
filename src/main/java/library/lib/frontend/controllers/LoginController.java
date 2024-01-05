@@ -83,7 +83,7 @@ public class LoginController extends BaseController {
 
         UserState.getInstance().setLoggedInUser(loggedInUser);
 
-        redirectToScene("/library/lib/dashboard-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
+        redirectToScene("/library/lib/book-list-view.fxml", "Hello", (Stage) getStage().getScene().getWindow());
     }
 
     @Override

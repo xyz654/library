@@ -26,6 +26,7 @@
                 <Text fx:id="authorLabel" style="-fx-fill: #3e3e3e;" />
                 <Text fx:id="categoryLabel" style="-fx-fill: #3e3e3e;" />
                 <Text fx:id="descriptionLabel" style="-fx-fill: #3e3e3e;" wrappingWidth="400" />
+                <Text fx:id="awaitingMembersLabel" style="-fx-fill: #3e3e3e;" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
       
@@ -39,6 +40,11 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
+                   <Button fx:id="reserveBook" mnemonicParsing="false" onAction="#reserveBook" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Reserve Book">
+                       <HBox.margin>
+                           <Insets left="10.0" />
+                       </HBox.margin>
+                   </Button>
                </children>
             </HBox>
             </VBox>

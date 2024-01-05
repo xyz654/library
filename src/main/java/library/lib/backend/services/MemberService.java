@@ -72,11 +72,19 @@ public class MemberService {
         return memberRepository.findById(member.getId());
     }
 
-    public List<Member> getAllMembers(){
+    public List<Member> getAllMembers() {
         return memberRepository.findAll();
     }
 
-    public void setPermission(Member member, Permissions permission){
-        memberRepository.updateMemberPermission(member.getId(), permission);
+    public void setPermission(Member member, Permissions permission) {
+        member.setPermission(permission);
+        memberRepository.save(member);
     }
+
+    public void setFavouriteCategory(Member member, Category category) {
+        member.setFavouriteCategory(category);
+        memberRepository.save(member);
+    }
+
+
 }

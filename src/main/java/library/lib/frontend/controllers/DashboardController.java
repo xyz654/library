@@ -5,6 +5,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import library.lib.backend.models.Author;
+import library.lib.backend.models.Filters;
 import library.lib.backend.models.Member;
 import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
