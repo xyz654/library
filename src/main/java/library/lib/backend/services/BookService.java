@@ -135,4 +135,12 @@ public class BookService {
         em.close();
         return books;
     }
+
+    public List<Book> getRecommendedBooks(Member member) {
+        EntityManager em = emf.createEntityManager();
+        List<Book> books = em.createQuery("select b from Book b where b.category = '" + member.getFavouriteCategory().getId() + "' " +
+                "and id in (Select r.book.id from Rate r where r.book.category = b.category group by r.book having avg(points) >= 4 and count(points) >= 1)").getResultList();
+        em.close();
+        return books;
+    }
 }

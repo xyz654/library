@@ -80,4 +80,11 @@ public class MemberService {
         member.setPermission(permission);
         memberRepository.save(member);
     }
+
+    public void setFavouriteCategory(Member member, Category category) {
+        member.setFavouriteCategory(category);
+        memberRepository.save(member);
+    }
+
+
 }
