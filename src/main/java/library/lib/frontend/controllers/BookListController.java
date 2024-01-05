@@ -6,18 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
 import library.lib.backend.models.Author;
 import library.lib.backend.models.Book;
 import library.lib.backend.models.Category;
@@ -28,25 +19,17 @@ import library.lib.frontend.layout.BootstrapColumn;
 import library.lib.frontend.layout.BootstrapPane;
 import library.lib.frontend.layout.BootstrapRow;
 import library.lib.frontend.layout.Breakpoint;
-import library.lib.frontend.state.SpringContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 @Component
 public class BookListController extends BaseController {
-
-    @FXML
-    private ListView<Book> bookListView;
-
     @FXML
     private TextField searchBar;
 
@@ -63,12 +46,6 @@ public class BookListController extends BaseController {
     private ComboBox<Boolean> isLoanedBooksVisible;
 
     @FXML
-    private Button clearButton;
-
-    @FXML
-    private Button filterButton;
-
-    @FXML
     private BorderPane borderPane;
 
     @Autowired
@@ -78,15 +55,6 @@ public class BookListController extends BaseController {
     private AuthorService authorService;
 
     private List<Book> books;
-
-    private static final double IMAGE_FIT_WIDTH = 200;
-    private static final double TEXT_FONT_SIZE = 24;
-    private static final Insets TEXT_MARGIN = new Insets(0, 0, 0, 50);
-    private static final Insets PANE_PADDING = new Insets(50);
-    private static final String UNDEFINED_CATEGORY = "undefined";
-    private static final String TEXT_FILL_COLOR = "#333333";
-    private static final String ODD_BACKGROUND_COLOR = "#b97a57";
-    private static final String EVEN_BACKGROUND_COLOR = "#f4f4f4";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -156,7 +124,31 @@ public class BookListController extends BaseController {
     @FXML
     private void handleClear() {
         authorSelect.setValue(null);
+        authorSelect.setPromptText("Select author");
+        authorSelect.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Select author");
+                } else {
+                    setText(item);
+                }
+            }
+        });
+        categorySelect.setPromptText("Select category");
         categorySelect.setValue(null);
+        categorySelect.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Select category");
+                } else {
+                    setText(item);
+                }
+            }
+        });
         isLoanedBooksVisible.setValue(null);
         searchBar.setText("");
 
