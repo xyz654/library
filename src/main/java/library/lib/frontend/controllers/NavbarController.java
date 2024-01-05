@@ -2,6 +2,8 @@ package library.lib.frontend.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.Member;
@@ -18,19 +20,22 @@ import java.util.ResourceBundle;
 public class NavbarController extends BaseController {
 
     @FXML
-    private Text booksListNav;
+    private VBox booksListNav;
 
     @FXML
-    private Text currentRentedBooksNav;
+    private VBox currentRentedBooksNav;
 
     @FXML
-    private Text rentedBooksHistoryNav;
+    private VBox rentedBooksHistoryNav;
 
     @FXML
-    private Text dashboardNav;
+    private VBox dashboardNav;
 
     @FXML
-    private Text adminNav;
+    private VBox adminNav;
+
+    @FXML
+    private HBox navbar;
 
     @FXML
     private void redirectToBooksList() {
@@ -61,10 +66,8 @@ public class NavbarController extends BaseController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Member member = UserState.getInstance().getLoggedInUser();
-        if (member.getPermission() != Permissions.MEMBER) {
-            adminNav.setOpacity(1);
-        } else {
-            adminNav.setOpacity(0);
+        if (member.getPermission() == Permissions.MEMBER) {
+            navbar.getChildren().remove(adminNav);
         }
     }
 
