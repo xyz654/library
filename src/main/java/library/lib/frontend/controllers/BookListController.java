@@ -11,8 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import library.lib.backend.models.Author;
@@ -21,6 +24,10 @@ import library.lib.backend.models.Category;
 import library.lib.backend.models.Filters;
 import library.lib.backend.services.AuthorService;
 import library.lib.backend.services.BookService;
+import library.lib.frontend.layout.BootstrapColumn;
+import library.lib.frontend.layout.BootstrapPane;
+import library.lib.frontend.layout.BootstrapRow;
+import library.lib.frontend.layout.Breakpoint;
 import library.lib.frontend.state.SpringContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -30,6 +37,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -60,6 +68,9 @@ public class BookListController extends BaseController {
     @FXML
     private Button filterButton;
 
+    @FXML
+    private BorderPane borderPane;
+
     @Autowired
     private BookService bookService;
 
@@ -87,13 +98,12 @@ public class BookListController extends BaseController {
         List<Book> books = bookService.getAllBooks();
         this.books = books;
         displayBooks(books);
-        setupListView();
     }
 
     private void setupFilters() {
-        authorSelect.setPromptText("Select Author");
-        categorySelect.setPromptText("Select Category");
-        isLoanedBooksVisible.setPromptText("Show loaned books?");
+        authorSelect.setPromptText("All");
+        categorySelect.setPromptText("All");
+        isLoanedBooksVisible.setPromptText("true");
 
         List<Author> authors = authorService.getAllAuthors();
         ObservableList<String> authorNames = FXCollections.observableArrayList();
@@ -114,14 +124,33 @@ public class BookListController extends BaseController {
     }
 
     private void displayBooks(List<Book> books) {
-        ObservableList<Book> observableBooks = FXCollections.observableArrayList(books);
-        bookListView.setItems(observableBooks);
-    }
+        BootstrapPane bootstrapPane = new BootstrapPane();
+        bootstrapPane.setPadding(new Insets(15));
+        bootstrapPane.setVgap(25);
+        bootstrapPane.setHgap(25);
 
-    private void setupListView() {
-        bookListView.setStyle("-fx-background-color: transparent;");
-        bookListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        bookListView.setCellFactory(createListCellFactory());
+        BootstrapRow row = new BootstrapRow();
+        for (Book book: books) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/book.fxml"));
+                VBox bookBox = loader.load();
+                BookController bookController = loader.getController();
+                bookController.setBook(book);
+                BootstrapColumn column = new BootstrapColumn(bookBox);
+                column.setBreakpointColumnWidth(Breakpoint.XSMALL, 6);
+                column.setBreakpointColumnWidth(Breakpoint.SMALL, 4);
+                column.setBreakpointColumnWidth(Breakpoint.LARGE, 2);
+                row.addColumn(column);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        bootstrapPane.addRow(row);
+        ScrollPane scrollPane = new ScrollPane(bootstrapPane);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        borderPane.setCenter(scrollPane);
     }
 
     @FXML
@@ -142,13 +171,12 @@ public class BookListController extends BaseController {
         String categoryName = categorySelect.getValue();
         Category category = categoryName == null ? null : bookService.getCategoryByName(categoryName);
 
-        boolean showLoaned = isLoanedBooksVisible.getValue() != null;
+        boolean showLoaned = isLoanedBooksVisible.getValue() != null ? isLoanedBooksVisible.getValue() : true;
 
-        Filters filters = new Filters(category, author, null, showLoaned);
+        Filters filters = new Filters(category, author, null, !showLoaned);
         List<Book> books = bookService.getBooksWithCustomQuery(filters);
         this.books = books;
         displayBooks(books);
-        setupListView();
     }
 
     @FXML
@@ -160,66 +188,8 @@ public class BookListController extends BaseController {
                             .filter(book -> book.getTitle() != null && book.getTitle().toLowerCase().contains(searchedTitle.toLowerCase()))
                             .toList();
             displayBooks(filteredBooks);
-            setupListView();
         } else {
             displayBooks(this.books);
-            setupListView();
-        }
-    }
-
-    private Callback<ListView<Book>, ListCell<Book>> createListCellFactory() {
-        return param -> new CustomListCell();
-    }
-
-    private class CustomListCell extends ListCell<Book> {
-        @Override
-        protected void updateItem(Book item, boolean empty) {
-            super.updateItem(item, empty);
-            if (item != null && !empty) {
-                setGraphic(createBookCell(item, getIndex()));
-                setOnMouseClicked(event -> openBookDetails(item));
-            } else {
-                setGraphic(null);
-            }
-        }
-    }
-
-    private GridPane createBookCell(Book item, int index) {
-        GridPane gridPane = new GridPane();
-
-        ImageView imageView = new ImageView(new Image(item.getBookCover()));
-        imageView.setFitWidth(IMAGE_FIT_WIDTH);
-        imageView.setPreserveRatio(true);
-        gridPane.add(imageView, 0, 0);
-
-        Text text = new Text(
-                "Title: " + item.getTitle() +
-                        "\nAuthor: " + item.getAuthor().getName() +
-                        "\nCategory: " + (item.getCategory() != null ? item.getCategory() : UNDEFINED_CATEGORY)
-        );
-        text.setStyle("-fx-font-size: " + TEXT_FONT_SIZE + "px; -fx-fill: " + TEXT_FILL_COLOR + ";");
-        GridPane.setMargin(text, TEXT_MARGIN);
-        gridPane.add(text, 1, 0);
-
-        String backgroundColor = (index % 2 == 0) ? ODD_BACKGROUND_COLOR : EVEN_BACKGROUND_COLOR;
-        gridPane.setStyle("-fx-padding: " + PANE_PADDING + "; -fx-background-color: " + backgroundColor + ";");
-
-        return gridPane;
-    }
-
-    private void openBookDetails(Book selectedBook) {
-        try {
-            ConfigurableApplicationContext springContext = SpringContext.getInstance().getContext();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/book-details-view.fxml"));
-            loader.setControllerFactory(springContext::getBean);
-            Parent root = loader.load();
-
-            BookDetailsController detailsController = loader.getController();
-            detailsController.setBookDetails(selectedBook);
-            Scene scene = bookListView.getScene();
-            scene.setRoot(root);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
