@@ -70,6 +70,10 @@ public class NavbarController extends BaseController {
     private void redirectToStatistics() {
         redirectToScene("/library/lib/statistics-view.fxml", "Statistics", (Stage) statisticsNav.getScene().getWindow());
     }
+    @FXML
+    private void redirectToUserPanel() {
+        redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) dashboardNav.getScene().getWindow());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
