@@ -172,7 +172,7 @@ public class ReadingRoomService {
         return readingRoomRepository.getAllRentedBooksByUser(member);
     }
 
-    public List<Book> getUserHistoryWithFilters(Filters filters) {
+    public List<ReadingRoom> getUserHistoryWithFilters(Filters filters) {
         String customQuery = "SELECT r FROM ReadingRoom r ";
         customQuery += "WHERE r.member = '" + filters.getMember().getId() + "' ";
         if (filters.getAuthor() != null) {
@@ -188,9 +188,9 @@ public class ReadingRoomService {
 
 
         EntityManager em = emf.createEntityManager();
-        List<Book> books = em.createQuery(customQuery).getResultList();
+        List<ReadingRoom> readingRooms = em.createQuery(customQuery).getResultList();
         em.close();
-        return books;
+        return readingRooms;
     }
 
 
