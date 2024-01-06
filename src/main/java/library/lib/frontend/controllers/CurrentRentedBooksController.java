@@ -16,7 +16,9 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import library.lib.backend.models.Book;
 import library.lib.backend.models.Member;
+import library.lib.backend.models.Permissions;
 import library.lib.backend.models.ReadingRoom;
+import library.lib.backend.services.EmailSenderService;
 import library.lib.backend.services.ReadingRoomService;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,9 @@ public class CurrentRentedBooksController extends BaseController {
     @Autowired
     private ReadingRoomService readingRoomService;
 
+    @Autowired
+    private EmailSenderService emailSenderService;
+
     private static final double IMAGE_FIT_WIDTH = 200;
     private static final double TEXT_FONT_SIZE = 24;
     private static final Insets TEXT_MARGIN = new Insets(0, 0, 0, 50);
@@ -46,12 +51,24 @@ public class CurrentRentedBooksController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        displayBooks();
+        if (checkIfWorker())
+            displayBooksAsWorker();
+        else
+            displayBooks();
         setupListView();
     }
-
+    private boolean checkIfWorker(){
+        Member member = UserState.getInstance().getLoggedInUser();
+        return member.getPermission() == Permissions.WORKER;
+    }
     private void displayBooks() {
         List<ReadingRoom> readingRooms = readingRoomService.getCurrentRentedBooksByMember(UserState.getInstance().getLoggedInUser());
+        ObservableList<ReadingRoom> observableReadingRooms = FXCollections.observableArrayList(readingRooms);
+        bookListView.setItems(observableReadingRooms);
+    }
+
+    private void displayBooksAsWorker() {
+        List<ReadingRoom> readingRooms = readingRoomService.getCurrentRentedBooksAllMembers();
         ObservableList<ReadingRoom> observableReadingRooms = FXCollections.observableArrayList(readingRooms);
         bookListView.setItems(observableReadingRooms);
     }
@@ -101,13 +118,23 @@ public class CurrentRentedBooksController extends BaseController {
 
         Button returnButton = new Button("Return Book");
         returnButton.setStyle(
-                "-fx-background-color: #FF0000; " +  // Kolor czerwony
-                        "-fx-text-fill: #FFFFFF; " +          // Kolor biały dla tekstu
-                        "-fx-cursor: hand;"                   // Kursor pointer
+                "-fx-background-color: #FF0000; " +
+                        "-fx-text-fill: #FFFFFF; " +
+                        "-fx-cursor: hand;"
         );
-        returnButton.setOnAction(event -> returnBookClicked(item.getBook())); // Przypisz akcję na kliknięcie
+        returnButton.setOnAction(event -> returnBookClicked(item.getBook()));
         gridPane.add(returnButton, 2, 0);
 
+        if(checkIfWorker()) {
+            Button sendReminderButton = new Button("Email Reminder");
+            sendReminderButton.setStyle(
+                    "-fx-background-color: #FF0000; " +
+                            "-fx-text-fill: #FFFFFF; " +
+                            "-fx-cursor: hand;"
+            );
+            sendReminderButton.setOnAction(event -> emailSenderService.sendBookReminderMail(item.getBook()));
+            gridPane.add(sendReminderButton, 2, 0);
+        }
         return gridPane;
     }
 

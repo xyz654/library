@@ -39,6 +39,11 @@
             <Font size="16.0" />
          </font>
       </Text>
+      <Text fx:id="statisticsNav" onMouseClicked="#redirectToStatistics" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Statistics" textAlignment="CENTER" wrappingWidth="120.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
       <Text fx:id="adminNav" onMouseClicked="#redirectToAdminPanel" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Admin panel" textAlignment="CENTER" wrappingWidth="120.0">
          <font>
             <Font size="16.0" />

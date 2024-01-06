@@ -25,21 +25,21 @@ public class EmailSenderService {
     public void sendBookReminderMail(Book book) {
         String mail = book.getLoaner().getEmail();
         String title = book.getTitle();
-        String text = "You've been loaning the book " + title + " for 30 days now. Please return it as soon as possible.";
+        String text = "You've been loaning the book " + title + " for a long time now. Please return it soon.";
         this.sendEmail(mail, title, text);
     }
 
     public void sendRentConfirmationMail(Book book) {
         String mail = book.getLoaner().getEmail();
         String title = book.getTitle();
-        String text = "You've rented the book " + title + ". Please return it within 30 days.";
+        String text = "You've rented the book " + title + ". Enjoy!";
         this.sendEmail(mail, title, text);
     }
 
     public void sendUpInQueueMail(Book book) {
         String mail = book.getLoaner().getEmail();
         String title = book.getTitle();
-        String text = title + " books is ready for your pickup, please come to the library to get it. ";
+        String text = title + " books is ready for your pickup. ";
         this.sendEmail(mail, title, text);
     }
 

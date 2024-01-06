@@ -33,6 +33,9 @@ public class NavbarController extends BaseController {
     private Text adminNav;
 
     @FXML
+    private Text statisticsNav;
+
+    @FXML
     private void redirectToBooksList() {
         redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) booksListNav.getScene().getWindow());
     }
@@ -57,6 +60,10 @@ public class NavbarController extends BaseController {
         redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) dashboardNav.getScene().getWindow());
     }
 
+    @FXML
+    private void redirectToStatistics() {
+        redirectToScene("/library/lib/statistics-view.fxml", "Statistics", (Stage) statisticsNav.getScene().getWindow());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.StatisticsController">
+    <center>
+        <VBox xmlns="http://javafx.com/javafx"
+              xmlns:fx="http://javafx.com/fxml" spacing="10">
+            <Label text="Number of Books Rented by Months" alignment="CENTER">
+                <font>
+                    <Font size="16"/>
+                </font>
+            </Label>
+            <BarChart fx:id="barChart" prefWidth="900.0" prefHeight="300.0">
+
+                <xAxis>
+                    <CategoryAxis fx:id="xAxis"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis"/>
+                </yAxis>
+
+            </BarChart>
+
+            <Label text="Number of Books Written by Authors" alignment="CENTER">
+                <font>
+                    <Font size="16"/>
+                </font>
+            </Label>
+            <BarChart fx:id="barChartAuthor" prefWidth="900.0" prefHeight="600.0">
+                <xAxis>
+                    <CategoryAxis fx:id="xAxisAuthor"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxisAuthor"/>
+                </yAxis>
+            </BarChart>
+
+            <BarChart fx:id="barChartCategory" prefWidth="900.0" prefHeight="600.0">
+                <xAxis>
+                    <CategoryAxis fx:id="xAxisCategory"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxisCategory"/>
+                </yAxis>
+            </BarChart>
+        </VBox>
+    </center>
+
+    <top>
+        <VBox alignment="CENTER_LEFT">
+            <Button fx:id="goBack" text="Back" onMouseClicked="#redirectToDashboard" style="-fx-cursor: hand; -fx-fill: white; -fx-padding: 5; -fx-background-color: #b97a57;"/>
+        </VBox>
+    </top>
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10" />
+    </padding>
+</BorderPane>

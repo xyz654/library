@@ -130,13 +130,12 @@ public class BookDetailsController extends BaseController {
         if (bookDetails.getLoaner() == null) {
             reserveBook.setText("Reserve Book");
             reserveBook.setStyle("-fx-background-color: #B97A57; -fx-text-fill: #FFFFFF");
-            rentBook.setOpacity(0);
+            reserveBook.setOpacity(0);
         } else {
             for(Member member : bookDetails.getAwaitingMembers()){
                 if(member.getId() == UserState.getInstance().getLoggedInUser().getId()){
                     reserveBook.setText("Book is already reserved by you");
                     reserveBook.setStyle("-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF");
-                    rentBook.setOpacity(1);
                     return;
                 }
             }
