@@ -13,6 +13,7 @@ import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,6 +37,7 @@ public class NavbarController extends BaseController {
 
     @FXML
     private HBox navbar;
+
 
     @FXML
     private void redirectToBooksList() {
@@ -62,6 +64,10 @@ public class NavbarController extends BaseController {
         redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) dashboardNav.getScene().getWindow());
     }
 
+    @FXML
+    private void redirectToUserPanel() {
+        redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) dashboardNav.getScene().getWindow());
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

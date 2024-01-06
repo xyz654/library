@@ -11,9 +11,10 @@ import javafx.scene.text.Text;
 import library.lib.backend.models.Book;
 import library.lib.frontend.state.SpringContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-
+@Component
 public class BookController {
     Book book;
 

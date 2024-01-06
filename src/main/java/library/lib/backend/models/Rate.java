@@ -52,6 +52,10 @@ public class Rate implements ReturnObject {
         return description;
     }
 
+    public String getDisplayFormat(){
+        return String.format("Rate: %d Description: %s", points, description);
+    }
+
     @Override
     public String toJson() throws JsonProcessingException {
         return null;
