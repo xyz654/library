@@ -3,101 +3,188 @@ package library.lib.frontend.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
-import library.lib.backend.models.ReadingRoom;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import library.lib.backend.models.*;
+import library.lib.backend.services.AuthorService;
+import library.lib.backend.services.BookService;
 import library.lib.backend.services.ReadingRoomService;
+import library.lib.frontend.layout.BootstrapColumn;
+import library.lib.frontend.layout.BootstrapPane;
+import library.lib.frontend.layout.BootstrapRow;
+import library.lib.frontend.layout.Breakpoint;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
 public class RentedBooksHistoryController extends BaseController {
+    @FXML
+    private TextField searchBar;
 
     @FXML
-    private ListView<ReadingRoom> bookListView;
+    private VBox searchButton;
+
+    @FXML
+    private ComboBox<String> authorSelect;
+
+    @FXML
+    private ComboBox<String> categorySelect;
+
+    @FXML
+    private ComboBox<Boolean> isLoanedBooksVisible;
+
+    @FXML
+    private BorderPane borderPane;
+
+    @Autowired
+    private BookService bookService;
 
     @Autowired
     private ReadingRoomService readingRoomService;
 
-    private static final double IMAGE_FIT_WIDTH = 200;
-    private static final double TEXT_FONT_SIZE = 24;
-    private static final Insets TEXT_MARGIN = new Insets(0, 0, 0, 50);
-    private static final Insets PANE_PADDING = new Insets(50);
-    private static final String UNDEFINED_CATEGORY = "undefined";
-    private static final String TEXT_FILL_COLOR = "#333333";
-    private static final String ODD_BACKGROUND_COLOR = "#b97a57";
-    private static final String EVEN_BACKGROUND_COLOR = "#f4f4f4";
+    @Autowired
+    private AuthorService authorService;
+
+    private List<ReadingRoom> readingRooms;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        displayBooks();
-        setupListView();
+        setupFilters();
+        initializeReadingRooms();
     }
 
-    private void displayBooks() {
+    private void initializeReadingRooms() {
         List<ReadingRoom> readingRooms = readingRoomService.getUserHistory(UserState.getInstance().getLoggedInUser());
-        ObservableList<ReadingRoom> observableReadingRooms = FXCollections.observableArrayList(readingRooms);
-        bookListView.setItems(observableReadingRooms);
+        this.readingRooms = readingRooms;
+        displayReadingRooms(readingRooms);
     }
 
-    private void setupListView() {
-        bookListView.setStyle("-fx-background-color: transparent;");
-        bookListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        bookListView.setCellFactory(createListCellFactory());
+    private void setupFilters() {
+        authorSelect.setPromptText("All");
+        categorySelect.setPromptText("All");
+        isLoanedBooksVisible.setPromptText("true");
+
+        List<Author> authors = authorService.getAllAuthors();
+        ObservableList<String> authorNames = FXCollections.observableArrayList();
+        for (Author author : authors) {
+            authorNames.add(author.getName());
+        }
+        authorSelect.setItems(authorNames);
+
+        List<Category> categories = bookService.getAllCategories();
+        ObservableList<String> categoryNames = FXCollections.observableArrayList();
+        for (Category category : categories) {
+            categoryNames.add(category.getName());
+        }
+        categorySelect.setItems(categoryNames);
+
+        ObservableList<Boolean> booleans = FXCollections.observableArrayList(Arrays.asList(false, true));
+        isLoanedBooksVisible.setItems(booleans);
     }
 
-    private Callback<ListView<ReadingRoom>, ListCell<ReadingRoom>> createListCellFactory() {
-        return param -> new CustomListCell();
-    }
+    private void displayReadingRooms(List<ReadingRoom> readingRooms) {
+        BootstrapPane bootstrapPane = new BootstrapPane();
+        bootstrapPane.setPadding(new Insets(15));
+        bootstrapPane.setVgap(25);
+        bootstrapPane.setHgap(25);
 
-    private class CustomListCell extends ListCell<ReadingRoom> {
-        @Override
-        protected void updateItem(ReadingRoom item, boolean empty) {
-            super.updateItem(item, empty);
-            if (item != null && !empty) {
-                setGraphic(createReadingRoomCell(item, getIndex()));
-            } else {
-                setGraphic(null);
+        BootstrapRow row = new BootstrapRow();
+        for (ReadingRoom readingRoom: readingRooms) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/rented-book.fxml"));
+                VBox bookBox = loader.load();
+                RentedBookController rentedBookController = loader.getController();
+                rentedBookController.setReadingRoom(readingRoom);
+                BootstrapColumn column = new BootstrapColumn(bookBox);
+                column.setBreakpointColumnWidth(Breakpoint.XSMALL, 6);
+                column.setBreakpointColumnWidth(Breakpoint.SMALL, 4);
+                column.setBreakpointColumnWidth(Breakpoint.LARGE, 2);
+                row.addColumn(column);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
+        bootstrapPane.addRow(row);
+        ScrollPane scrollPane = new ScrollPane(bootstrapPane);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        borderPane.setCenter(scrollPane);
     }
 
-    private GridPane createReadingRoomCell(ReadingRoom item, int index) {
-        GridPane gridPane = new GridPane();
+    @FXML
+    private void handleClear() {
+        authorSelect.setValue(null);
+        authorSelect.setPromptText("Select author");
+        authorSelect.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Select author");
+                } else {
+                    setText(item);
+                }
+            }
+        });
+        categorySelect.setPromptText("Select category");
+        categorySelect.setValue(null);
+        categorySelect.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Select category");
+                } else {
+                    setText(item);
+                }
+            }
+        });
+        isLoanedBooksVisible.setValue(null);
+        searchBar.setText("");
 
-        ImageView imageView = new ImageView(new Image(item.getBook().getBookCover()));
-        imageView.setFitWidth(IMAGE_FIT_WIDTH);
-        imageView.setPreserveRatio(true);
-        gridPane.add(imageView, 0, 0);
+        initializeReadingRooms();
+    }
 
-        Text text = new Text(
-                "Title: " + item.getBook().getTitle() +
-                        "\nAuthor: " + item.getBook().getAuthor().getName() +
-                        "\nCategory: " + (item.getBook().getCategory() != null ? item.getBook().getCategory() : UNDEFINED_CATEGORY) +
-                        "\nFrom: " + (item.getStart_date()) +
-                        "\nTo: " + (item.getEnd_date())
-        );
-        text.setStyle("-fx-font-size: " + TEXT_FONT_SIZE + "px; -fx-fill: " + TEXT_FILL_COLOR + ";");
-        GridPane.setMargin(text, TEXT_MARGIN);
-        gridPane.add(text, 1, 0);
+    @FXML
+    private void handleFilter() {
+        String authorName = authorSelect.getValue();
+        Author author = authorName == null ? null : authorService.getAuthorByName(authorName).get(0);
 
-        String backgroundColor = (index % 2 == 0) ? ODD_BACKGROUND_COLOR : EVEN_BACKGROUND_COLOR;
-        gridPane.setStyle("-fx-padding: " + PANE_PADDING + "; -fx-background-color: " + backgroundColor + ";");
+        String categoryName = categorySelect.getValue();
+        Category category = categoryName == null ? null : bookService.getCategoryByName(categoryName);
 
-        return gridPane;
+        boolean showLoaned = isLoanedBooksVisible.getValue() != null ? isLoanedBooksVisible.getValue() : true;
+
+        Filters filters = new Filters(category, author, null, !showLoaned, UserState.getInstance().getLoggedInUser());
+        List<ReadingRoom> readingRooms = readingRoomService.getUserHistoryWithFilters(filters);
+        this.readingRooms = readingRooms;
+        displayReadingRooms(readingRooms);
+    }
+
+    @FXML
+    private void handleSearch() {
+        String searchedTitle = searchBar.getText();
+        if (searchedTitle != null && !searchedTitle.equals("")) {
+            List<ReadingRoom> filteredReadingRooms =
+                    this.readingRooms.stream()
+                            .filter(readingRoom -> readingRoom.getBook().getTitle() != null && readingRoom.getBook().getTitle().toLowerCase().contains(searchedTitle.toLowerCase()))
+                            .toList();
+            displayReadingRooms(filteredReadingRooms);
+        } else {
+            displayReadingRooms(this.readingRooms);
+        }
     }
 
     @Override
