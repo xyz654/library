@@ -198,6 +198,10 @@ public class ReadingRoomService {
         return readingRoomRepository.getCurrentReadingBooksByUser(member);
     }
 
+    public List<ReadingRoom> getCurrentRentedBooksAllMembers() {
+        return readingRoomRepository.getAllReadingRooms();
+    }
+
     public List<Statistics> getStats(){
         List<Object[]> stats = readingRoomRepository.getRentedBooksByDate();
         List<Statistics> statistics = new ArrayList<>();

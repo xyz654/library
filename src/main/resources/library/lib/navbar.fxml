@@ -72,6 +72,24 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
+
+       <VBox fx:id="statisticsNav" alignment="CENTER" maxHeight="-Infinity" onMouseClicked="#redirectToStatistics" prefHeight="32.0" prefWidth="100.0">
+           <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Statistics" textAlignment="CENTER">
+                   <font>
+                       <Font name="Lato Regular" size="18.0" />
+                   </font>
+               </Text>
+           </children>
+           <HBox.margin>
+               <Insets right="24.0" />
+           </HBox.margin>
+           <cursor>
+               <Cursor fx:constant="HAND" />
+           </cursor>
+       </VBox>
+
+
       <VBox fx:id="adminNav" alignment="CENTER" layoutX="340.0" layoutY="10.0" maxHeight="-Infinity" onMouseClicked="#redirectToAdminPanel" prefHeight="32.0" prefWidth="100.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Panel" textAlignment="CENTER">
