@@ -101,7 +101,7 @@ public class BookDetailsController extends BaseController {
             awaitingMembersLabel.setText(awaitingLabel);
             coverImageView.setImage(new Image(bookDetails.getBookCover()));
             updateRentButtonText(bookDetails);
-            showRateButton();
+
         }
     }
 
