@@ -2,20 +2,14 @@ package library.lib.frontend.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.Member;
 import library.lib.backend.models.Permissions;
-import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
