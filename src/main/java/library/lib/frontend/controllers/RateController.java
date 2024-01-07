@@ -64,18 +64,19 @@ public class RateController extends BaseController{
     @FXML
     void goToBook(){
         try {
+            ConfigurableApplicationContext springContext = SpringContext.getInstance().getContext();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/book-details-view.fxml"));
+            loader.setControllerFactory(springContext::getBean);
             Parent root = loader.load();
 
             BookDetailsController detailsController = loader.getController();
             detailsController.setBookDetails(this.book);
-
-            Stage stage = (Stage) goToBook.getScene().getWindow();
-            stage.setScene(new Scene(root));
-
+            Scene scene = goToBook.getScene();
+            scene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     private void updateView(){

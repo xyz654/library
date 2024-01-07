@@ -50,8 +50,8 @@
                   </Text>
                </children>
             </VBox>
-            <Button fx:id="addRate" layoutX="269.0" layoutY="347.0" mnemonicParsing="false" onAction="#addRateClick" style="-fx-background-color: #964B00;" text="Add rate" textFill="WHITE" />
-            <Button fx:id="goToBook" layoutX="46.0" layoutY="347.0" mnemonicParsing="false" onAction="#goToBook" style="-fx-background-color: #964B00;" text="Go to book" textFill="WHITE" />
+            <Button fx:id="addRate" layoutX="269.0" layoutY="347.0" mnemonicParsing="false" onAction="#addRateClick" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Add rate" textFill="WHITE" />
+            <Button fx:id="goToBook" layoutX="46.0" layoutY="347.0" mnemonicParsing="false" onAction="#goToBook" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Go to book" textFill="WHITE" />
          </children>
       </AnchorPane>
    </top>

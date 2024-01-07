@@ -2,6 +2,8 @@ package library.lib.frontend.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -37,6 +39,8 @@ public class NavbarController extends BaseController {
 
     @FXML
     private HBox navbar;
+
+
 
 
     @FXML
@@ -81,4 +85,11 @@ public class NavbarController extends BaseController {
     protected Node getStage() {
         return booksListNav;
     }
+
+    public void logOut() {
+        UserState.getInstance().setLoggedInUser(null);
+        redirectToScene("/library/lib/login-view.fxml",
+                "Login", (Stage) dashboardNav.getScene().getWindow());
+    }
+
 }

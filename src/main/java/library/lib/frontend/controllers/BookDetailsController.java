@@ -78,6 +78,8 @@ public class BookDetailsController extends BaseController {
         this.bookDetails = book;
         updateView();
         updateReserveButtonText(bookDetails);
+        updateRentButtonText(bookDetails);
+        showRateButton();
         showRates();
     }
 
@@ -99,7 +101,7 @@ public class BookDetailsController extends BaseController {
             awaitingMembersLabel.setText(awaitingLabel);
             coverImageView.setImage(new Image(bookDetails.getBookCover()));
             updateRentButtonText(bookDetails);
-            showRateButton();
+
         }
     }
 
@@ -135,10 +137,12 @@ public class BookDetailsController extends BaseController {
         if (bookDetails.getLoaner() == null) {
             rentBook.setText("Rent Book");
             rentBook.setStyle("-fx-background-color: #B97A57; -fx-text-fill: #FFFFFF");
+            rentBook.setOpacity(1);
             reserveBook.setOpacity(0);
         } else {
             rentBook.setText("Book is already rented");
             rentBook.setStyle("-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF");
+            rentBook.setOpacity(0);
             reserveBook.setOpacity(1);
         }
     }
@@ -200,7 +204,8 @@ public class BookDetailsController extends BaseController {
 
     private void showRateButton(){
         Member user = UserState.getInstance().getLoggedInUser();
-        if(readingRoomService.getRentedBooksByMember(user).contains(bookDetails)) rate.setOpacity(1);
+        List<Integer> allIds = readingRoomService.getRentedBooksByMember(user).stream().map(Book::getId).collect(Collectors.toList());
+        if(allIds.contains(bookDetails.getId())) rate.setOpacity(1);
         else rate.setOpacity(0);
     }
 
