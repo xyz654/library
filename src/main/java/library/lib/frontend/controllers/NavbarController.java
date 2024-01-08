@@ -34,7 +34,8 @@ public class NavbarController extends BaseController {
     @FXML
     private HBox navbar;
 
-
+    @FXML
+    private VBox statisticsNav;
 
 
     @FXML
@@ -64,7 +65,10 @@ public class NavbarController extends BaseController {
 
     @FXML
     private void redirectToUserPanel() {
-        redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) dashboardNav.getScene().getWindow());
+        redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) dashboardNav.getScene().getWindow());}
+
+    private void redirectToStatistics() {
+        redirectToScene("/library/lib/statistics-view.fxml", "Statistics", (Stage) statisticsNav.getScene().getWindow());
     }
 
     @Override
