@@ -62,7 +62,7 @@ public class NavbarController extends BaseController {
     private void redirectToAdminPanel() {
         redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) dashboardNav.getScene().getWindow());
     }
-
+    @FXML
     private void redirectToStatistics() {
         redirectToScene("/library/lib/statistics-view.fxml", "Statistics", (Stage) statisticsNav.getScene().getWindow());
     }
