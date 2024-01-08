@@ -24,6 +24,8 @@ public interface ReadingRoomRepository extends JpaRepository<ReadingRoom, Intege
     List<Book> getPreviouslyRentedBooks();
     @Query("Select r from ReadingRoom r where r.book = ?1 and r.member = ?2 order by r.id desc")
     List<ReadingRoom> getReadingRoom(Book book, Member member);
+    @Query("SELECT r FROM ReadingRoom r WHERE r.end_date is null")
+    List<ReadingRoom> getAllReadingRooms();
 
     @Query("Select count(r.book), day(r.end_date), month(r.end_date), year(r.end_date) from ReadingRoom r where r.end_date is not null " +
             "group by day(r.end_date), month(r.end_date), year(r.end_date) order by year(r.end_date), month(r.end_date), day(r.end_date)")

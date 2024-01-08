@@ -37,7 +37,6 @@ public class NavbarController extends BaseController {
     @FXML
     private VBox statisticsNav;
 
-
     @FXML
     private void redirectToBooksList() {
         redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) booksListNav.getScene().getWindow());
@@ -66,6 +65,7 @@ public class NavbarController extends BaseController {
     @FXML
     private void redirectToUserPanel() {
         redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) dashboardNav.getScene().getWindow());}
+
 
     private void redirectToStatistics() {
         redirectToScene("/library/lib/statistics-view.fxml", "Statistics", (Stage) statisticsNav.getScene().getWindow());
