@@ -59,7 +59,7 @@ public class CurrentRentedBooksController extends BaseController {
     }
     private boolean checkIfWorker(){
         Member member = UserState.getInstance().getLoggedInUser();
-        return member.getPermission() == Permissions.WORKER;
+        return member.getPermission() == Permissions.WORKER || member.getPermission() == Permissions.ADMIN;
     }
     private void displayBooks() {
         List<ReadingRoom> readingRooms = readingRoomService.getCurrentRentedBooksByMember(UserState.getInstance().getLoggedInUser());

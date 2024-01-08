@@ -45,7 +45,7 @@ public class AdminPanelController extends BaseController {
     }
     @FXML
     private void redirectToDashboard(){
-        redirectToScene("/library/lib/dashboard-view.fxml", "Dashboard", (Stage) dashboardButton.getScene().getWindow());
+        redirectToScene("/library/lib/book-list-view.fxml", "Dashboard", (Stage) dashboardButton.getScene().getWindow());
     }
 
     @Override

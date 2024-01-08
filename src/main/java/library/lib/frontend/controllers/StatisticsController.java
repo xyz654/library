@@ -147,6 +147,6 @@ public class StatisticsController extends BaseController {
 
     @FXML
     private void redirectToDashboard() {
-        redirectToScene("/library/lib/dashboard-view.fxml", "Dashboard", (Stage) goBack.getScene().getWindow());
+        redirectToScene("/library/lib/book-list-view.fxml", "Dashboard", (Stage) goBack.getScene().getWindow());
     }
 }

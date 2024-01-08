@@ -40,7 +40,7 @@ public class UserPanelController extends BaseController{
 
     @FXML
     private void goToDashboard(){
-        redirectToScene("/library/lib/dashboard-view.fxml", "Books", (Stage) dashboard.getScene().getWindow());
+        redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) dashboard.getScene().getWindow());
     }
 
     @FXML
