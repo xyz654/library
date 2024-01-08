@@ -80,6 +80,11 @@ public class MemberService {
         member.setPermission(permission);
         memberRepository.save(member);
     }
+    public void setNotifications(Member member, boolean notification) {
+        member.setNotifications(notification);
+        memberRepository.save(member);
+    }
+
 
     public void setFavouriteCategory(Member member, Category category) {
         member.setFavouriteCategory(category);

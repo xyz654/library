@@ -1,24 +1,32 @@
 package library.lib.frontend.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import library.lib.backend.models.Book;
-import library.lib.backend.models.Member;
-import library.lib.backend.models.ReturnCodes;
-import library.lib.backend.models.ReturnModel;
+import library.lib.backend.models.*;
 import library.lib.backend.services.BookService;
 import library.lib.backend.services.MemberService;
+import library.lib.backend.services.RateService;
 import library.lib.backend.services.ReadingRoomService;
+import library.lib.frontend.state.SpringContext;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class BookDetailsController extends BaseController {
@@ -46,7 +54,11 @@ public class BookDetailsController extends BaseController {
     @FXML
     private Button reserveBook;
     @FXML
+    private Button rate;
+    @FXML
     private Text awaitingMembersLabel;
+    @FXML
+    ListView rates;
 
     @Autowired
     ReadingRoomService readingRoomService;
@@ -57,12 +69,18 @@ public class BookDetailsController extends BaseController {
     @Autowired
     MemberService memberService;
 
+    @Autowired
+    RateService rateService;
+
     private Book bookDetails;
 
     public void setBookDetails(Book book) {
         this.bookDetails = book;
         updateView();
         updateReserveButtonText(bookDetails);
+        updateRentButtonText(bookDetails);
+        showRateButton();
+        showRates();
     }
 
     private void updateView() {
@@ -83,6 +101,7 @@ public class BookDetailsController extends BaseController {
             awaitingMembersLabel.setText(awaitingLabel);
             coverImageView.setImage(new Image(bookDetails.getBookCover()));
             updateRentButtonText(bookDetails);
+
         }
     }
 
@@ -118,10 +137,12 @@ public class BookDetailsController extends BaseController {
         if (bookDetails.getLoaner() == null) {
             rentBook.setText("Rent Book");
             rentBook.setStyle("-fx-background-color: #B97A57; -fx-text-fill: #FFFFFF");
+            rentBook.setOpacity(1);
             reserveBook.setOpacity(0);
         } else {
             rentBook.setText("Book is already rented");
             rentBook.setStyle("-fx-background-color: #FF0000; -fx-text-fill: #FFFFFF");
+            rentBook.setOpacity(0);
             reserveBook.setOpacity(1);
         }
     }
@@ -149,6 +170,42 @@ public class BookDetailsController extends BaseController {
             rentBook.setOpacity(1);
 
         }
+    }
+    public void rateBook(){
+
+        try {
+            ConfigurableApplicationContext springContext = SpringContext.getInstance().getContext();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/rate-view.fxml"));
+            loader.setControllerFactory(springContext::getBean);
+            Parent root = loader.load();
+
+            RateController rateController = loader.getController();
+            rateController.setBook(this.bookDetails);
+
+            Stage stage = (Stage) rate.getScene().getWindow();
+            stage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showRates(){
+        List<Rate> allRates = rateService.getReviewsByBookId(bookDetails.getId());
+        ObservableList<String> ratesDisplay = FXCollections.observableArrayList(
+                allRates.stream()
+                        .map(Rate::getDisplayFormat)
+                        .collect(Collectors.toList())
+        );
+        rates.setItems(ratesDisplay);
+
+    }
+
+    private void showRateButton(){
+        Member user = UserState.getInstance().getLoggedInUser();
+        List<Integer> allIds = readingRoomService.getRentedBooksByMember(user).stream().map(Book::getId).collect(Collectors.toList());
+        if(allIds.contains(bookDetails.getId())) rate.setOpacity(1);
+        else rate.setOpacity(0);
     }
 
     @Override

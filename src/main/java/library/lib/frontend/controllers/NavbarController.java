@@ -4,13 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.Member;
 import library.lib.backend.models.Permissions;
-import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -66,6 +63,10 @@ public class NavbarController extends BaseController {
     }
 
     @FXML
+    private void redirectToUserPanel() {
+        redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) dashboardNav.getScene().getWindow());}
+
+
     private void redirectToStatistics() {
         redirectToScene("/library/lib/statistics-view.fxml", "Statistics", (Stage) statisticsNav.getScene().getWindow());
     }
@@ -82,4 +83,11 @@ public class NavbarController extends BaseController {
     protected Node getStage() {
         return booksListNav;
     }
+
+    public void logOut() {
+        UserState.getInstance().setLoggedInUser(null);
+        redirectToScene("/library/lib/login-view.fxml",
+                "Login", (Stage) dashboardNav.getScene().getWindow());
+    }
+
 }
