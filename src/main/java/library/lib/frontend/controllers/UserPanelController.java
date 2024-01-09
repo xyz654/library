@@ -37,9 +37,9 @@ public class UserPanelController extends BaseController{
     @FXML
     private ToggleButton notifications;
 
-    @FXML
-    private void goToBookList(){
+    @FXML    private void goToDashboard(){
         redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) bookList.getScene().getWindow());
+
     }
 
     @FXML
