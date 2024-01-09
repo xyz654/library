@@ -97,8 +97,9 @@ public class UserPanelController extends BaseController{
             strCategories.add(category.getName());
         }
         categoryComboBox.getItems().setAll(strCategories);
-        categoryComboBox.setValue(user.getFavouriteCategory().getName());
-
+        if(user.getFavouriteCategory() != null){
+            categoryComboBox.setValue(user.getFavouriteCategory().getName());
+        }
     }
 
     @Override
