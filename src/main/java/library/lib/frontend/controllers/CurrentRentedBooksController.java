@@ -1,44 +1,45 @@
 package library.lib.frontend.controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.util.Callback;
 import library.lib.backend.models.Book;
 import library.lib.backend.models.Member;
 import library.lib.backend.models.Permissions;
 import library.lib.backend.models.ReadingRoom;
 import library.lib.backend.services.EmailSenderService;
 import library.lib.backend.services.ReadingRoomService;
+import library.lib.frontend.layout.BootstrapColumn;
+import library.lib.frontend.layout.BootstrapPane;
+import library.lib.frontend.layout.BootstrapRow;
+import library.lib.frontend.layout.Breakpoint;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
 public class CurrentRentedBooksController extends BaseController {
-
-    @FXML
-    private ListView<ReadingRoom> bookListView;
-
     @Autowired
     private ReadingRoomService readingRoomService;
 
     @Autowired
     private EmailSenderService emailSenderService;
+
+    @FXML
+    private BorderPane borderPane;
 
     private static final double IMAGE_FIT_WIDTH = 200;
     private static final double TEXT_FONT_SIZE = 24;
@@ -55,7 +56,6 @@ public class CurrentRentedBooksController extends BaseController {
             displayBooksAsWorker();
         else
             displayBooks();
-        setupListView();
     }
     private boolean checkIfWorker(){
         Member member = UserState.getInstance().getLoggedInUser();
@@ -63,86 +63,56 @@ public class CurrentRentedBooksController extends BaseController {
     }
     private void displayBooks() {
         List<ReadingRoom> readingRooms = readingRoomService.getCurrentRentedBooksByMember(UserState.getInstance().getLoggedInUser());
-        ObservableList<ReadingRoom> observableReadingRooms = FXCollections.observableArrayList(readingRooms);
-        bookListView.setItems(observableReadingRooms);
+        renderBooks(readingRooms);
     }
 
     private void displayBooksAsWorker() {
         List<ReadingRoom> readingRooms = readingRoomService.getCurrentRentedBooksAllMembers();
-        ObservableList<ReadingRoom> observableReadingRooms = FXCollections.observableArrayList(readingRooms);
-        bookListView.setItems(observableReadingRooms);
+        renderBooks(readingRooms);
     }
 
-    private void setupListView() {
-        bookListView.setStyle("-fx-background-color: transparent;");
-        bookListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        bookListView.setCellFactory(createListCellFactory());
-    }
+    private void renderBooks(List<ReadingRoom> readingRooms) {
+        BootstrapPane bootstrapPane = new BootstrapPane();
+        bootstrapPane.setPadding(new Insets(15));
+        bootstrapPane.setVgap(25);
+        bootstrapPane.setHgap(25);
 
-    private Callback<ListView<ReadingRoom>, ListCell<ReadingRoom>> createListCellFactory() {
-        return param -> new CustomListCell();
-    }
+        BootstrapRow row = new BootstrapRow();
+        for (ReadingRoom readingRoom: readingRooms) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/library/lib/rented-book.fxml"));
+                VBox bookBox = loader.load();
+                RentedBookController rentedBookController = loader.getController();
+                rentedBookController.setReadingRoom(readingRoom);
 
-    private class CustomListCell extends ListCell<ReadingRoom> {
-        @Override
-        protected void updateItem(ReadingRoom item, boolean empty) {
-            super.updateItem(item, empty);
-            if (item != null && !empty) {
-                setGraphic(createReadingRoomCell(item, getIndex()));
-            } else {
-                setGraphic(null);
+                rentedBookController.getReturnBookButton().setOnAction(event -> returnBookClicked(readingRoom.getBook()));
+                if (checkIfWorker()) {
+                    rentedBookController.getEmailReminderButton().setOnAction(event -> emailSenderService.sendBookReminderMail(readingRoom.getBook()));
+                } else {
+                    rentedBookController.getEmailReminderButton().setOpacity(0);
+                }
+
+                BootstrapColumn column = new BootstrapColumn(bookBox);
+                column.setBreakpointColumnWidth(Breakpoint.XSMALL, 6);
+                column.setBreakpointColumnWidth(Breakpoint.SMALL, 4);
+                column.setBreakpointColumnWidth(Breakpoint.LARGE, 2);
+                row.addColumn(column);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
-    }
-
-    private GridPane createReadingRoomCell(ReadingRoom item, int index) {
-        GridPane gridPane = new GridPane();
-
-        ImageView imageView = new ImageView(new Image(item.getBook().getBookCover()));
-        imageView.setFitWidth(IMAGE_FIT_WIDTH);
-        imageView.setPreserveRatio(true);
-        gridPane.add(imageView, 0, 0);
-
-        Text text = new Text(
-                "Title: " + item.getBook().getTitle() +
-                        "\nAuthor: " + item.getBook().getAuthor().getName() +
-                        "\nCategory: " + (item.getBook().getCategory() != null ? item.getBook().getCategory() : UNDEFINED_CATEGORY) +
-                        "\nRent Date: " + (item.getStart_date())
-        );
-        text.setStyle("-fx-font-size: " + TEXT_FONT_SIZE + "px; -fx-fill: " + TEXT_FILL_COLOR + ";");
-        GridPane.setMargin(text, TEXT_MARGIN);
-        gridPane.add(text, 1, 0);
-
-        String backgroundColor = (index % 2 == 0) ? ODD_BACKGROUND_COLOR : EVEN_BACKGROUND_COLOR;
-        gridPane.setStyle("-fx-padding: " + PANE_PADDING + "; -fx-background-color: " + backgroundColor + ";");
-
-        Button returnButton = new Button("Return Book");
-        returnButton.setStyle(
-                "-fx-background-color: #FF0000; " +
-                        "-fx-text-fill: #FFFFFF; " +
-                        "-fx-cursor: hand;"
-        );
-        returnButton.setOnAction(event -> returnBookClicked(item.getBook()));
-        gridPane.add(returnButton, 2, 0);
-
-        if(checkIfWorker()) {
-            Button sendReminderButton = new Button("Email Reminder");
-            sendReminderButton.setStyle(
-                    "-fx-background-color: #FF0000; " +
-                            "-fx-text-fill: #FFFFFF; " +
-                            "-fx-cursor: hand;"
-            );
-            sendReminderButton.setOnAction(event -> emailSenderService.sendBookReminderMail(item.getBook()));
-            gridPane.add(sendReminderButton, 2, 0);
-        }
-        return gridPane;
+        bootstrapPane.addRow(row);
+        ScrollPane scrollPane = new ScrollPane(bootstrapPane);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        borderPane.setCenter(scrollPane);
     }
 
     private void returnBookClicked(Book book) {
         Member user = UserState.getInstance().getLoggedInUser();
         readingRoomService.returnBook(book, user);
-        displayBooks();
-        setupListView();
+        displayBooks();;
     }
 
     @Override
