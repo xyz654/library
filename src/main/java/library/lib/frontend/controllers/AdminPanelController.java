@@ -9,7 +9,6 @@ import library.lib.backend.models.Member;
 import library.lib.backend.models.Permissions;
 import library.lib.frontend.state.UserState;
 import org.springframework.stereotype.Component;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,7 +25,7 @@ public class AdminPanelController extends BaseController {
     Button manageMembersButton;
 
     @FXML
-    Button dashboardButton;
+    Button bookListButton;
     @FXML
     private void redirectToMemberList(){
         redirectToScene("/library/lib/members-list-view.fxml", "Members", (Stage) manageMembersButton.getScene().getWindow());
@@ -44,10 +43,9 @@ public class AdminPanelController extends BaseController {
         redirectToScene("/library/lib/add-new-category.fxml", "Add new author", (Stage) addAuthorButton.getScene().getWindow());
     }
     @FXML
-    private void redirectToDashboard(){
-        redirectToScene("/library/lib/book-list-view.fxml", "Dashboard", (Stage) dashboardButton.getScene().getWindow());
+    private void redirectToBookList(){
+        redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) bookListButton.getScene().getWindow());
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Member member = UserState.getInstance().getLoggedInUser();
