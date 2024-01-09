@@ -9,13 +9,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.Category;
 import library.lib.backend.models.Member;
-import library.lib.backend.persistence.MemberRepository;
 import library.lib.backend.services.BookService;
 import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +49,7 @@ public class UserPanelController extends BaseController{
 
     @FXML
     private void goToDashboard(){
-        redirectToScene("/library/lib/dashboard-view.fxml", "Books", (Stage) dashboard.getScene().getWindow());
+        redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) dashboard.getScene().getWindow());
     }
 
     @FXML
@@ -65,7 +63,6 @@ public class UserPanelController extends BaseController{
             notifications.setText("Off");
             notifications.setStyle("-fx-background-color: #ff0000;");
             memberService.setNotifications(user, false);
-
         }
     }
 
@@ -101,8 +98,6 @@ public class UserPanelController extends BaseController{
         }
         categoryComboBox.getItems().setAll(strCategories);
     }
-
-
 
     @Override
     protected Node getStage() {

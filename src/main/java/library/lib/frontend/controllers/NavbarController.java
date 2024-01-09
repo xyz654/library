@@ -26,9 +26,6 @@ public class NavbarController extends BaseController {
     private VBox rentedBooksHistoryNav;
 
     @FXML
-    private VBox dashboardNav;
-
-    @FXML
     private VBox adminNav;
 
     @FXML
@@ -37,6 +34,11 @@ public class NavbarController extends BaseController {
     @FXML
     private VBox statisticsNav;
 
+    @FXML
+    private VBox userPanel;
+
+    @FXML
+    private VBox logOut;
 
     @FXML
     private void redirectToBooksList() {
@@ -52,15 +54,10 @@ public class NavbarController extends BaseController {
     private void redirectToRentedBooksHistory() {
         redirectToScene("/library/lib/rented-books-history-view.fxml", "Books", (Stage) rentedBooksHistoryNav.getScene().getWindow());
     }
-
-    @FXML
-    private void redirectToDashboard() {
-        redirectToScene("/library/lib/dashboard-view.fxml", "Books", (Stage) dashboardNav.getScene().getWindow());
-    }
-
+    
     @FXML
     private void redirectToAdminPanel() {
-        redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) dashboardNav.getScene().getWindow());
+        redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) adminNav.getScene().getWindow());
     }
     @FXML
     private void redirectToStatistics() {
@@ -68,7 +65,7 @@ public class NavbarController extends BaseController {
     }
     @FXML
     private void redirectToUserPanel() {
-        redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) dashboardNav.getScene().getWindow());
+        redirectToScene("/library/lib/profil-view.fxml", "User panel", (Stage) userPanel.getScene().getWindow());
     }
 
     @Override
@@ -87,7 +84,7 @@ public class NavbarController extends BaseController {
     public void logOut() {
         UserState.getInstance().setLoggedInUser(null);
         redirectToScene("/library/lib/login-view.fxml",
-                "Login", (Stage) dashboardNav.getScene().getWindow());
+                "Login", (Stage) logOut.getScene().getWindow());
     }
 
 }
