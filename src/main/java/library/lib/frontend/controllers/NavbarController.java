@@ -54,8 +54,7 @@ public class NavbarController extends BaseController {
     private void redirectToRentedBooksHistory() {
         redirectToScene("/library/lib/rented-books-history-view.fxml", "Books", (Stage) rentedBooksHistoryNav.getScene().getWindow());
     }
-
-
+    
     @FXML
     private void redirectToAdminPanel() {
         redirectToScene("/library/lib/admin-view.fxml", "Admin panel", (Stage) adminNav.getScene().getWindow());

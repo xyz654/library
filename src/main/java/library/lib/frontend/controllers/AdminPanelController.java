@@ -9,7 +9,6 @@ import library.lib.backend.models.Member;
 import library.lib.backend.models.Permissions;
 import library.lib.frontend.state.UserState;
 import org.springframework.stereotype.Component;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -47,7 +46,6 @@ public class AdminPanelController extends BaseController {
     private void redirectToBookList(){
         redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) bookListButton.getScene().getWindow());
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Member member = UserState.getInstance().getLoggedInUser();

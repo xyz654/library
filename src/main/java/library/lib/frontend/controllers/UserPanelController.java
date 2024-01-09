@@ -7,7 +7,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import library.lib.backend.models.Member;
-import library.lib.backend.persistence.MemberRepository;
 import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,6 @@ public class UserPanelController extends BaseController{
             notifications.setText("Off");
             notifications.setStyle("-fx-background-color: #ff0000;");
             memberService.setNotifications(user, false);
-
         }
     }
 
