@@ -7,10 +7,10 @@
     <list default="true" id="870bf132-9f9c-484b-bd00-142df0fa6593" name="Changes" comment="Added mailing functionality, updated models, added new queries, changed Category field from String to Model, added new Category form, added Rating functionalities">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/ReadingRoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RentedBooksHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RentedBooksHistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/rented-books-history-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/rented-books-history-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/CurrentRentedBooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/CurrentRentedBooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RentedBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/RentedBookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/current-rented-books-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/current-rented-books-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/rented-book.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/rented-book.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +45,12 @@
                 <item name="lib" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="lib" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -103,7 +109,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;5c36bf69f328913fe7acd3a0da96998b&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;af5206e05ba08bfb63b745fe8b8e088a&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -302,6 +308,7 @@
       <workItem from="1704306083921" duration="18000" />
       <workItem from="1704392476652" duration="626000" />
       <workItem from="1704440198178" duration="1310000" />
+      <workItem from="1704819925600" duration="106000" />
     </task>
     <task id="LOCAL-00001" summary="Database integration, Member model, controller and service - handling request and member login/register handler">
       <created>1701440524031</created>
