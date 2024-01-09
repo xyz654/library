@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.ComboBox?>
 <BorderPane style="-fx-background-color: #e0d2bf;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.UserPanelController">
 
     <top>
@@ -62,7 +63,10 @@
                   </ToggleButton>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
+                <ComboBox fx:id="categoryComboBox" layoutX="241.0" layoutY="139.0" prefWidth="150.0" />
+                <Button fx:id="saveCategories" onAction="#saveCategories" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Save categories">
+
+                <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
                <children>
       
                       <Button fx:id="dashboard" onAction="#goToDashboard" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Dashboard">

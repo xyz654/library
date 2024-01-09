@@ -3,23 +3,31 @@ package library.lib.frontend.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import library.lib.backend.models.Category;
 import library.lib.backend.models.Member;
 import library.lib.backend.persistence.MemberRepository;
+import library.lib.backend.services.BookService;
 import library.lib.backend.services.MemberService;
 import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 @Component
 public class UserPanelController extends BaseController{
 
+
+    @Autowired
+    BookService bookService;
     @Autowired
     MemberService memberService;
 
@@ -37,6 +45,9 @@ public class UserPanelController extends BaseController{
 
     @FXML
     private ToggleButton notifications;
+    @FXML
+    private ComboBox<String> categoryComboBox;
+
 
     @FXML
     private void goToDashboard(){
@@ -58,6 +69,13 @@ public class UserPanelController extends BaseController{
         }
     }
 
+    @FXML
+    public void saveCategories(){
+        Category category = bookService.getCategoryByName(categoryComboBox.getValue());
+        Member mem = UserState.getInstance().getLoggedInUser();
+        memberService.setFavouriteCategory(mem, category);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Member user = UserState.getInstance().getLoggedInUser();
@@ -73,7 +91,16 @@ public class UserPanelController extends BaseController{
             notifications.setStyle("-fx-background-color: #ff0000;");
             notifications.setSelected(false);
         }
+
+        List<Category> categories = bookService.getAllCategories();
+        List<String> strCategories = new ArrayList<>();
+        for (Category category : categories) {
+            strCategories.add(category.getName());
+        }
+        categoryComboBox.getItems().setAll(strCategories);
     }
+
+
 
     @Override
     protected Node getStage() {
