@@ -39,7 +39,7 @@ public class UserPanelController extends BaseController{
     Text email;
 
     @FXML
-    Button dashboard;
+    Button booklist;
 
     @FXML
     private ToggleButton notifications;
@@ -49,7 +49,7 @@ public class UserPanelController extends BaseController{
 
     @FXML
     private void goToDashboard(){
-        redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) dashboard.getScene().getWindow());
+        redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) booklist.getScene().getWindow());
     }
 
     @FXML
