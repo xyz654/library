@@ -65,7 +65,7 @@
             <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
                <children>
       
-                      <Button fx:id="dashboard" onAction="#goToDashboard" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Dashboard">
+                      <Button fx:id="bookList" onAction="#goToBookList" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Book list">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

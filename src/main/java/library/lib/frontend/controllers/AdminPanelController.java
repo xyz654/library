@@ -26,7 +26,7 @@ public class AdminPanelController extends BaseController {
     Button manageMembersButton;
 
     @FXML
-    Button dashboardButton;
+    Button bookListButton;
     @FXML
     private void redirectToMemberList(){
         redirectToScene("/library/lib/members-list-view.fxml", "Members", (Stage) manageMembersButton.getScene().getWindow());
@@ -44,8 +44,8 @@ public class AdminPanelController extends BaseController {
         redirectToScene("/library/lib/add-new-category.fxml", "Add new author", (Stage) addAuthorButton.getScene().getWindow());
     }
     @FXML
-    private void redirectToDashboard(){
-        redirectToScene("/library/lib/dashboard-view.fxml", "Dashboard", (Stage) dashboardButton.getScene().getWindow());
+    private void redirectToBookList(){
+        redirectToScene("/library/lib/book-list-view.fxml", "Books", (Stage) bookListButton.getScene().getWindow());
     }
 
     @Override
