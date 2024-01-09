@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.ComboBox?>
 <BorderPane style="-fx-background-color: #e0d2bf;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.lib.frontend.controllers.UserPanelController">
 
     <top>
@@ -20,58 +21,65 @@
     <center>
         <ScrollPane fitToWidth="true">
             <VBox spacing="20" style="-fx-padding: 20px; -fx-font-size: 18px; -fx-alignment: center;">
-            <Text fx:id="panel" style="-fx-fill: #3e3e3e;" text="User Panel" />
-            <HBox prefHeight="51.0" prefWidth="400.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="81.26171875">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Text>
-                      <Text fx:id="name" style="-fx-fill: #3e3e3e;">
-                     <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox prefHeight="54.0" prefWidth="400.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="email" wrappingWidth="81.7939453125">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Text fx:id="email" style="-fx-fill: #3e3e3e;">
-                     <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
-               <children>
-                  <Text fx:id="awaitingMembersLabel1" style="-fx-fill: #3e3e3e;" text="notifications" />
-                  <ToggleButton fx:id="notifications" mnemonicParsing="false" onAction="#notificationChange" text="On" selected="true">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </ToggleButton>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
-               <children>
-      
-                      <Button fx:id="bookList" onAction="#goToBookList" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Book list">
-                     <HBox.margin>
+                <Text fx:id="panel" style="-fx-fill: #3e3e3e;" text="User Panel" />
+                <HBox prefHeight="51.0" prefWidth="400.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="81.26171875">
+                            <HBox.margin>
+                                <Insets top="10.0" />
+                            </HBox.margin>
+                        </Text>
+                        <Text fx:id="name" style="-fx-fill: #3e3e3e;">
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox prefHeight="54.0" prefWidth="400.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="email" wrappingWidth="81.7939453125">
+                            <HBox.margin>
+                                <Insets top="10.0" />
+                            </HBox.margin>
+                        </Text>
+                        <Text fx:id="email" style="-fx-fill: #3e3e3e;">
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Text>
+                    </children>
+                    <VBox.margin>
                         <Insets />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
+                    <children>
+                        <Text fx:id="awaitingMembersLabel1" style="-fx-fill: #3e3e3e;" text="notifications" />
+                        <ToggleButton fx:id="notifications" mnemonicParsing="false" onAction="#notificationChange" text="On" selected="true">
+                            <HBox.margin>
+                                <Insets left="20.0" />
+                            </HBox.margin>
+                        </ToggleButton>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
+                    <children>
+                        <ComboBox fx:id="categoryComboBox" layoutX="241.0" layoutY="139.0" prefWidth="150.0" />
+                        <Button fx:id="saveCategories" onAction="#saveCategories" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Save categories">
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="64.0" prefWidth="400.0">
+                    <children>
+
+                        <Button fx:id="booklist" onAction="#goToDashboard" style="-fx-background-color: #b97a57; -fx-text-fill: #ffffff;" text="Book list">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
             </VBox>
         </ScrollPane>
     </center>

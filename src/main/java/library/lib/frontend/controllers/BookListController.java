@@ -19,6 +19,7 @@ import library.lib.frontend.layout.BootstrapColumn;
 import library.lib.frontend.layout.BootstrapPane;
 import library.lib.frontend.layout.BootstrapRow;
 import library.lib.frontend.layout.Breakpoint;
+import library.lib.frontend.state.UserState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -63,7 +64,19 @@ public class BookListController extends BaseController {
     }
 
     private void initializeBooks() {
+        try{
+            bookService.loadJson();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         List<Book> books = bookService.getAllBooks();
+        this.books = books;
+        displayBooks(books);
+    }
+
+    @FXML
+    private void handleShowRecomendedBooks() {
+        List<Book> books = bookService.getRecommendedBooks(UserState.getInstance().getLoggedInUser());
         this.books = books;
         displayBooks(books);
     }
