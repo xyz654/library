@@ -6,14 +6,18 @@ import library.lib.backend.persistence.AuthorRepository;
 import library.lib.backend.persistence.BookRepository;
 import library.lib.backend.persistence.CategoryRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
-
 
 @Service
 @Slf4j
@@ -145,5 +149,45 @@ public class BookService {
                 "and id in (Select r.book.id from Rate r where r.book.category = b.category group by r.book having avg(points) >= 4 and count(points) >= 1)").getResultList();
         em.close();
         return books;
+    }
+
+
+    public void loadJson() throws IOException {
+        try{
+            String content;
+            try {
+                content = new String(Files.readAllBytes(Paths.get("./" + "amazon.books.json")));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+            JSONArray obj = new JSONArray(content);
+            for(int i =0 ; i< 100;i++){
+                JSONObject book = obj.getJSONObject(i);
+                JSONArray category = book.getJSONArray("categories");
+                String cat = category.getString(0);
+                Category c = this.getCategoryByName(cat);
+                if(c == null){
+                    c = new Category(cat);
+//                    categoryRepository.save(c);
+                }
+                JSONArray authors = book.getJSONArray("authors");
+                String auth = authors.getString(0);
+                Author a = authorRepository.findByName(auth).size() > 0 ? authorRepository.findByName(auth).get(0) : null;
+                if(a == null){
+                    a = new Author(auth);
+//                    authorRepository.save(a);
+                }
+                String url = book.getString("thumbnailUrl");
+                if(url == null){
+                    url = "https://ecsmedia.pl/c/ksiazka-pod-tytulem-tom-1-w-iext121791863.jpg";
+                }
+                Book b = new Book(book.getString("title"),a, "", url, "", c);
+//                bookRepository.save(b);
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

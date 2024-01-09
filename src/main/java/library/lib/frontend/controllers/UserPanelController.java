@@ -74,6 +74,8 @@ public class UserPanelController extends BaseController{
         Category category = bookService.getCategoryByName(categoryComboBox.getValue());
         Member mem = UserState.getInstance().getLoggedInUser();
         memberService.setFavouriteCategory(mem, category);
+        mem.setFavouriteCategory(category);
+        UserState.getInstance().setLoggedInUser(mem);
     }
 
     @Override

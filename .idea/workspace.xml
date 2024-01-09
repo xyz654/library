@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="870bf132-9f9c-484b-bd00-142df0fa6593" name="Changes" comment="Added users list on the dashboard">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/library.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/backend/services/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/BookListController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/UserPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/library/lib/frontend/controllers/UserPanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/book-list-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/book-list-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/library/lib/profil-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/library/lib/profil-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
