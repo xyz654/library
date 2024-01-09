@@ -55,7 +55,7 @@
 
     <top>
         <VBox alignment="CENTER_LEFT">
-            <Button fx:id="goBack" text="Back" onMouseClicked="#redirectToDashboard" style="-fx-cursor: hand; -fx-fill: white; -fx-padding: 5; -fx-background-color: #b97a57;"/>
+            <Button fx:id="goBack" text="Back" onMouseClicked="#redirectToAllBooks" style="-fx-cursor: hand; -fx-fill: white; -fx-padding: 5; -fx-background-color: #b97a57;"/>
         </VBox>
     </top>
 
