@@ -8,9 +8,9 @@ Marcin Bereta, Hubert Gancarczyk, Magdalena Skrok, Laura Wiktor
 
 Projekt zakłada stworzenie aplikacji obsługującej działalność czytelni, oferującej trzy poziomy dostępu: użytkownika, pracownika i administratora.
 
-Użytkownik ma możliwość rejestracji w systemie, podając swój adres email, nick oraz ustawiając hasło zgodne z regułami. Dzięki temu będzie mógł zalogować się do systemu, wyświetlić polecane książki, ocenić te które chociaż raz czytał, wyświetlić statystyki, sprawdzić spis treści i okładkę wybranej pozycji, dodatkowo będzie mógł wyświetlić książki danego autora.
+Użytkownik ma możliwość rejestracji w systemie, podając swój adres email, nick oraz ustawiając hasło zgodne z regułami. Dzięki temu będzie mógł zalogować się do systemu, wyświetlić polecane książki, ocenić te które chociaż raz czytał, wyświetlić statystyki, sprawdzić okładkę wybranej pozycji, dodatkowo będzie mógł wyświetlić książki danego autora.
 
-Funkcje pracownika obejmują przyjmowanie zwracanych książek oraz udzielanie kolejnych wypożyczeń czytelnikom. Natomiast uprawnienia administratora pozwalają na dodawanie nowych książek do bazy danych. Oboje mają możliwość podglądu aktualnego stanu czytelni.
+Funkcje pracownika obejmują dodanie nowych książek, kategorii czy autora do bazydanych. Natomiast uprawnienia administratora pozwalają na zarządzanie członkami czytelni, zmiany ich ról, dodatkowa administrator posiada te same funkcje co pracownik.
 
 Cała aplikacja jest oparta na języku Java oraz wykorzystuje framework Spring Boot. Struktura projektu została logicznie podzielona na frontend i backend. Backend odpowiada za połączenie z bazą danych oraz obsługę systemu, natomiast frontend zajmuje się warstwą wizualną, zapewniając interakcję użytkownika z aplikacją.
 
@@ -18,19 +18,17 @@ Aby uruchomić projekt należy uruchomić LibraryApp.
 
 # Schemat bazy danych
 
-![Alt text](image-6.png)
+![Alt text](image-25.png)
+Baza danych zawiera sześć tabel obsługujących funkcjonalność aplikacji. Tabela member przechowuje informacje o pracowniku, administratorze lub czytelniku. Tabela Book odpowiada za dane dotyczące pojedynczego egzemplarza książek będących na stanie czytelni. Reading_room przechowuje dane o korzystających z czytelni, a Rate pozwala na ocenę danej książki przez czytelnika. Tabela Author przechowuje informacje o autorach dostępnych pozycji. Tabela Category dostępne kategorie książek.
 
-Baza danych zawiera pięć tabel obsługujących funkcjonalność aplikacji. Tabela member przechowuje informacje o pracowniku, administratorze lub czytelniku. Tabela Book odpowiada za dane dotyczące pojedynczego egzemplarza książek będących na stanie czytelni. Reading_room przechowuje dane o korzystających z czytelni, a Rate pozwala na ocenę danej książki przez czytelnika. Tabela Author przechowuje informacje o autorach dostępnych pozycji.
+# Schemat aplikacji z zależnościami Spring'a
 
-# Aktualny - niekompletny schemat aplikacji z zależnościami Spring'a
+![Alt text](image-24.png)
 
-![Alt text](image-8.png)
+# Schemat obiektowy aplikacji
 
-# Aktualny - niekompletny schemat obiektowy aplikacji
+![Alt text](image.png)
 
-![Alt text](image-9.png)
-
-# Zakładany końcowy model obiektowy
 
 ## Widoki
 
@@ -40,17 +38,17 @@ Baza danych zawiera pięć tabel obsługujących funkcjonalność aplikacji. Tab
 **Widok książek** - pozwala przeglądać dostępne pozycje, będzie umożliwiał wyświetlenie wszystkich książek podanego autora lub wybranej kategorii. \
 **Widok dodawania książki** - pozwala dodać nową książkę do czytelni. \
 **Widok dodawania autora** - pozwala dodać nowego autora do czytelni. \
-**Widok dodawania kategorii** - pozwala dodać nową kategorię do czytelni. \ 
+**Widok dodawania kategorii** - pozwala dodać nową kategorię do czytelni. \
 **Widok administratora** - umożliwia dodanie nowej książki do czytelni oraz nowego autora. Ma możliwość zmiany funkcji każdego użytkownika. \
 **Widok obecnie wypożyczonych książek** - pozwala wyświetlić wszystkie wypożyczone książki przez użytkownika. \
 **Widok listy użytkowników** - pozwala wyświetlić wszystkich użytkowników. \
 **Widok oceniania książki** - pozwala ocenić książkę. \
 **Widok wypożyczonych książek** - pozwala wyświetlić wszystkie wypożyczone książki aktualnie. \
-**Widok wszystkich wypożyczeń ** - pozwala wyświetlić wszystkie wypożyczenia. \
+**Widok wszystkich wypożyczeń** - pozwala wyświetlić wszystkie wypożyczenia. \
 **Widok statystyk** - pozwala wyświetlić statystyki. \
 **Widok profilu użytkownika** - pozwala wyświetlić profil użytkownika i nim zarządzać. \
 
-### Już zaimplementowane:
+## Kontrolery:
 
 **BaseController** - abstrakcyjna klasa kontrolera interfejsu użytkownika. Zawiera metody obsługujące nawigację między scenami oraz obsługę logowania.\
 **Metody:**\
@@ -136,7 +134,6 @@ void setupListView()\
 Callback<ListView<Book>, ListCell<Book>> createListCellFactory()\
 Node getStage()
 
-**DashboardController** - klasa dziedzicząca po BaseController służąca do obsługi podstawowego widoku po zalogowaniu użytkownika - prototyp widoku użytkownika. Pobiera i wyświetla ostationo zalogowanych użytkowników.\
 **Metody:**\
 void initialize(URL url, ResourceBundle resourceBundle)\
 void redirectToBooksList()\
@@ -195,12 +192,7 @@ Node getStage()
 
 ## Serwisy
 
-**StatisticsService** - obsłuży logikę biznesową statystyk - dodanie opinii i najlepsze opinie bez lub wraz z opisem, będzie posiadał metody:
-_getBestBooks_, _getBestOpinions_, _addRate_. \
-
-### Już zaimplementowane:
-
-**MemberService** - obsłuży logikę biznesową związaną z obsługą czytelnika - logowanie, rejestracja oraz pobranie listy najnowszych członków. \
+**MemberService** - obsługuje logikę biznesową związaną z obsługą czytelnika - logowanie, rejestracja oraz pobranie listy najnowszych członków. \
 **Konstruktor:** MemberService(MemberRepository memberRepository) \
 **Metody:**\
 ReturnModel register(String username, String password, String email)\
@@ -220,7 +212,7 @@ List<Book> getBooksByAuthor(Author author)\
 List<Book> getBooksByCategory(String category)\
 List<Book> getBooksWithCustomQuery(Filters filters)
 
-**ReadingRoomService** - obsłuży logikę biznesową czytelni - początek i koniec wizyty oraz aktualnie trwające wizyty jak i aktualną wizytę konkretnego użytkownika.
+**ReadingRoomService** - obsłuży logikę biznesową czytelni - początek i koniec wizyty oraz aktualnie trwające wizyty jak i aktualną wizytę konkretnego użytkownika.\
 **Konstruktor:** ReadingRoomService(ReadingRoomRepository readingRoomRepository, MemberRepository memberRepository, BookRepository bookRepository) \
 **Metody:**\
 ReturnModel rentBook(Book book, Member member)\
@@ -257,12 +249,17 @@ List<Statistics> getBookStatistics()
 
 ## Persystencje
 
-**StatisticsRepository** - rozszerzy interfejs JpaRepository o: _getBestBooks_ (pobierze z bazy najlepsze książki porównując punkty), _getBestOpinions_ (pobierze najlepsze książki wraz z ich opisowymi opiniami). \
+**MemberRepository** - rozszerza domyślny interfejs JpaRepository o metodę findByName i findById zwracającą obiekt Member na podstawie podanego adresu email, o ile istnieje lub na podstawie podanego Id.
 
-### Już zaimplementowane:
+**AuthorRepository** - rozszerza domyślny interfejs JpaRepository o metodę findByName, zwracającą authora, jeżeli taki istnieje.
 
-**MemberRepository** - rozszerza domyślny interfejs JpaRepository o metodę _findByEmail_ zwracającą obiekt Member na podstawie podanego adresu email, o ile istnieje.
-**AuthorRepository** - rozszerza domyślny interfejs JpaRepository o metodę findByName, zwracająca authora jeżeli taki istnieje.\
+**CategoryRepository** - rozszerza domyślny interfejs JpaRepository o metodę findByName, zwracającą kategorię, jeżeli taki istnieje.
+
+**CategoryRepository** - rozszerza domyślny interfejs JpaRepository o metody:\
+List<Rate> findByMemberAndBook(Member member, Book book)\
+List<Rate> findByBookId(Integer bookId)\
+List<Object[]> findAverageRatings()
+
 **BookRepository** - rozszerza domyślny interfejs JpaRepository o metody:\
 List<Book> findByTitle(String title)\
 List<Book> findByAuthor(Author author)\
@@ -279,9 +276,7 @@ List<ReadingRoom> getReadingRoom(Book book, Member member)
 
 ## Modele
 
-**Statistics** - reprezentujący konkretną opinię - tabelę Rate z bazy, poza podstawowymi metodami będzie posiadał metodę _checkRate_, która sprawdzi czy wartość wystawionej opinii znajduje się w przedziale 0-5.
-
-### Już zaimplementowane:
+**Rate** - reprezentujący konkretną opinię - tabelę Rate z bazy, poza podstawowymi metodami będzie posiadał metodę _checkRate_, która sprawdzi czy wartość wystawionej opinii znajduje się w przedziale 0-5.
 
 **Member** - reprezentujący członka czytelni - tabelę Member z bazy, poza podstawowymi metodami posiada metody _verifyEmail_ i _verifyPassword_, które sprawdzają poprawność danych wejściowych. \
 **Konstruktor:** Member(String name, String email, String password)
@@ -294,6 +289,10 @@ List<ReadingRoom> getReadingRoom(Book book, Member member)
 
 **ReadingRoom** - reprezentujący instancję wypożyczenia - tabelę ReadingRoom z bazy, posiada podstawowe metody. \
 **Konstruktor:** ReadingRoom(Member member, Book book, Date start_date)
+
+**Category** - reprezentujący kategorię - tabelę Category z bazy.
+**Konstruktor:** Category(String name)
+
 
 ## Pozostałe zaimplementowane klasy potrzebne do działania aplikacji:
 
@@ -371,10 +370,6 @@ void main(String[] args)
 
 ![Alt text](image-2.png)
 
-### Widok po zalogowaniu
-
-![Alt text](image-5.png)
-
 ### Widok listy książek
 
 ![Alt text](image-10.png)
@@ -385,11 +380,11 @@ void main(String[] args)
 
 ### Widok wypożyczonych książek
 
-![Alt text](image-12.png)
+![Alt text](image-26.png)
 
 ### Widok historii wypożyczeń
 
-![Alt text](image-13.png)
+![Alt text](image-27.png)
 
 ### Widok panelu administratora
 
@@ -421,7 +416,11 @@ void main(String[] args)
 
 ### Widok oceniania książki
 
-![Alt text](image-21.png)
+![Alt text](image-28.png)
+
+### Widok fromularza oceniania
+
+![Alt text](image-29.png)
 
 ### Widok powiadaminia mailem
 
